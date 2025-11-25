@@ -1,0 +1,7 @@
+com\cinematch\project\CineMatchProjectApplication.class
+com\cinematch\project\services\MovieService.class
+com\cinematch\project\controllers\KPIController.class
+com\cinematch\project\repositories\MovieRepository.class
+com\cinematch\project\controllers\ActorController.class
+com\cinematch\project\controllers\MovieController.class
+com\cinematch\project\models\Movie.class
