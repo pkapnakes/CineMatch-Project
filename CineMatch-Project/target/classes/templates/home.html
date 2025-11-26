@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CineMatch</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header glass-header">
+    <h1 class="logo">🎬 CineMatch</h1>
+    <input id="searchInput" class="search-bar" type="text" placeholder="Search movies...">
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="hero-title">
+            Welcome to <span class="accent">CineMatch</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Discover, track and explore your personalized cinematic universe.
+        </p>
+
+        <button class="hero-btn" onclick="scrollToTrending()">Start Exploring</button>
+    </div>
+</section>
+
+<!-- ===== TRENDING (API) ===== -->
+<section class="category" id="trending">
+    <h2>Movies</h2>
+    <div class="movies-row" id="trending-container">
+        <!-- API Movies appear here -->
+    </div>
+</section>
+
+<script>
+
+    // Smooth scroll
+    function scrollToTrending() {
+        document.getElementById("trending").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Enter triggers search
+    document.getElementById("searchInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            loadMovies(this.value);
+        }
+    });
+
+    // TMDB API loader
+    async function loadMovies(query) {
+        try {
+            const response = await fetch(`/tmdb/movies?query=${encodeURIComponent(query)}`);
+            const movies = await response.json();
+
+            const container = document.getElementById("trending-container");
+            container.innerHTML = "";
+
+            movies.forEach(movie => {
+                const card = document.createElement("div");
+                card.className = "movie-card";
+
+                card.innerHTML = `
+                    <img class="movie-poster" src="${movie.posterUrl}" alt="${movie.title}">
+                    <div class="movie-info">
+                        <p class="movie-title">${movie.title}</p>
+                        <p class="movie-rating">${movie.releaseDate}</p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+        } catch (err) {
+            console.error("API error:", err);
+        }
+    }
+
+</script>
+
+</body>
+</html>

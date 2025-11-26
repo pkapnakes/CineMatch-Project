@@ -1,82 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CineMatch</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
-
-<body>
-
-<!-- ===== HEADER ===== -->
-<header class="header glass-header">
-    <h1 class="logo">🎬 CineMatch</h1>
-    <input id="searchInput" class="search-bar" type="text" placeholder="Search movies...">
-</header>
-
-<!-- ===== HERO SECTION ===== -->
-<section class="hero-section">
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-        <h1 class="hero-title">
-            Welcome to <span class="accent">CineMatch</span>
-        </h1>
-
-        <p class="hero-subtitle">
-            Discover, track and explore your personalized cinematic universe.
-        </p>
-
-        <!-- Κουμπί που κάνει scroll -->
-        <button class="hero-btn" onclick="scrollToTrending()">Start Exploring</button>
-    </div>
-</section>
-
-<!-- ===== TRENDING ===== -->
-<section class="category" id="trending">
-    <h2>🔥 Trending</h2>
-    <div class="movies-row">
-        <div class="movie-card">Movie 1</div>
-        <div class="movie-card">Movie 2</div>
-        <div class="movie-card">Movie 3</div>
-        <div class="movie-card">Movie 4</div>
-        <div class="movie-card">Movie 5</div>
-    </div>
-</section>
-
-<!-- ===== RECOMMENDED ===== -->
-<section class="category">
-    <h2>⭐ Recommended</h2>
-    <div class="movies-row">
-        <div class="movie-card">Movie A</div>
-        <div class="movie-card">Movie B</div>
-        <div class="movie-card">Movie C</div>
-        <div class="movie-card">Movie D</div>
-        <div class="movie-card">Movie E</div>
-    </div>
-</section>
-
 <script>
-    // search glow animation
-    document.getElementById("searchInput").addEventListener("input", function () {
-        const value = this.value.trim();
-
-        if (value.length > 0) {
-            this.style.borderColor = "#ff4f4f";
-            this.style.boxShadow = "0 0 10px #ff4f4f";
-        } else {
-            this.style.borderColor = "#555";
-            this.style.boxShadow = "none";
-        }
-    });
-
-    // SMOOTH SCROLL στο Trending
+    // Smooth scroll
     function scrollToTrending() {
-        document.getElementById("trending").scrollIntoView({
+        document.getElementById("movies-section").scrollIntoView({
             behavior: "smooth"
         });
     }
-</script>
 
-</body>
-</html>
+    // Search event
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            loadMovies(searchInput.value);
+        }
+    });
+
+    // TMDB → Load Movies
+    async function loadMovies(query) {
+        try {
+            const response = await fetch(`/tmdb/movies?query=${encodeURIComponent(query)}`);
+            const movies = await response.json();
+
+            const container = document.getElementById("movies-container");
+            container.innerHTML = "";
+
+            movies.forEach(movie => {
+                const card = document.createElement("div");
+                card.className = "movie-card";
+
+                card.innerHTML = `
+                    <img src="${movie.posterUrl}" alt="${movie.title}">
+                    <p class="movie-title">${movie.title}</p>
+                `;
+
+                container.appendChild(card);
+            });
+
+        } catch (err) {
+            console.error("Error loading movies:", err);
+        }
+    }
+</script>
