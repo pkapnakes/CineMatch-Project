@@ -8,31 +8,56 @@
 
 <body>
 
-<header class="header">
+<!-- ===== HEADER ===== -->
+<header class="header glass-header">
     <h1 class="logo">🎬 CineMatch</h1>
     <input id="searchInput" class="search-bar" type="text" placeholder="Search movies...">
 </header>
 
-<section class="category">
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="hero-title">
+            Welcome to <span class="accent">CineMatch</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Discover, track and explore your personalized cinematic universe.
+        </p>
+
+        <!-- Κουμπί που κάνει scroll -->
+        <button class="hero-btn" onclick="scrollToTrending()">Start Exploring</button>
+    </div>
+</section>
+
+<!-- ===== TRENDING ===== -->
+<section class="category" id="trending">
     <h2>🔥 Trending</h2>
     <div class="movies-row">
         <div class="movie-card">Movie 1</div>
         <div class="movie-card">Movie 2</div>
         <div class="movie-card">Movie 3</div>
+        <div class="movie-card">Movie 4</div>
+        <div class="movie-card">Movie 5</div>
     </div>
 </section>
 
+<!-- ===== RECOMMENDED ===== -->
 <section class="category">
     <h2>⭐ Recommended</h2>
     <div class="movies-row">
         <div class="movie-card">Movie A</div>
         <div class="movie-card">Movie B</div>
         <div class="movie-card">Movie C</div>
+        <div class="movie-card">Movie D</div>
+        <div class="movie-card">Movie E</div>
     </div>
 </section>
 
 <script>
-    // Simple Search Animation & Message
+    // search glow animation
     document.getElementById("searchInput").addEventListener("input", function () {
         const value = this.value.trim();
 
@@ -44,6 +69,13 @@
             this.style.boxShadow = "none";
         }
     });
+
+    // SMOOTH SCROLL στο Trending
+    function scrollToTrending() {
+        document.getElementById("trending").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 </script>
 
 </body>

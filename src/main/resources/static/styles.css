@@ -1,10 +1,13 @@
-/* ======= GENERAL ======= */
+/* ======= GLOBAL ======= */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: #0d0d0d;
     color: white;
+
+    /* μοντέρνο deep-black UI */
+    background: linear-gradient(180deg, #0a0a0a 0%, #000000 80%);
+    background-attachment: fixed;
 }
 
 /* ======= HEADER ======= */
@@ -12,135 +15,256 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background: #141414;
+    padding: 18px 40px;
+
+    background: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255, 0, 0, 0.18);
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.08);
+
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #222;
 }
 
 .logo {
     font-size: 28px;
     margin: 0;
-    color: #ff4f4f;
+    color: #ff3b3b;
+    font-weight: bold;
 }
 
-/* ======= SEARCH BAR ======= */
+/* ======= SEARCH ======= */
 .search-bar {
     width: 250px;
-    padding: 10px;
+    padding: 10px 16px;
     border-radius: 25px;
-    border: 2px solid #555;
-    background: #1f1f1f;
+
+    border: 2px solid #2a2a2a;
+    background: #111;
+
     color: white;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .search-bar:focus {
-    border-color: #ff4f4f;
+    border-color: #ff3b3b;
+    box-shadow: 0 0 10px rgba(255, 50, 50, 0.6);
     outline: none;
-    box-shadow: 0 0 10px #ff4f4f;
 }
 
-/* ======= CATEGORY SECTION ======= */
+/* ======= HERO ======= */
+.hero-section {
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background: url('/hero.jpg') center/cover no-repeat;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.15);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), #000);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.accent {
+    color: #ff3b3b;
+}
+
+.hero-subtitle {
+    margin-top: 10px;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+.hero-btn {
+    margin-top: 22px;
+    padding: 12px 28px;
+    background: #ff3b3b;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    font-size: 16px;
+    color: #fff;
+    transition: 0.25s ease;
+}
+
+.hero-btn:hover {
+    background: #ff1f1f;
+    transform: scale(1.05);
+}
+
+/* ======= SECTIONS ======= */
 .category {
-    padding: 20px;
+    padding: 30px 50px;
 }
 
 .category h2 {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    font-size: 22px;
 }
 
-/* ======= MOVIE ROW ======= */
+/* ======= HORIZONTAL MOVIE SCROLL ======= */
 .movies-row {
     display: flex;
-    gap: 15px;
+    gap: 16px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding: 25px 0 30px 0; /* extra space πάνω-κάτω */
+}
+
+
+.movies-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.movies-row {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+
+    /* χώρο για hover */
+    padding-top: 28px;
+    padding-bottom: 28px;
+
+    /* ⭐ σημαντικό: προσθέτει χώρο αριστερά να ΜΗΝ κόβονται */
+    padding-left: 40px;
+}
+
+.movies-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.movies-row::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
 }
 
 .movie-card {
-    min-width: 160px;
-    height: 230px;
-    background: #222;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-/* Hover effect */
-.movie-card:hover {
-    transform: scale(1.1);
-    background: #ff4f4f;
-}
-/* ====== LOGIN PAGE ====== */
-.login-page {
-    background: #000;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Login Card */
-.login-box {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 40px;
+    min-width: 165px;
+    height: 245px;
+    background: #121212;
     border-radius: 12px;
-    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.6);
+}
+
+.movie-card:hover {
+    transform: translateY(-6px) scale(1.04);
+    border-color: rgba(255, 0, 0, 0.35);
+    box-shadow: 0 15px 40px rgba(255, 15, 15, 0.25);
+}
+
+
+
+/* ======= LOGIN PAGE ======= */
+.login-page {
+    background: linear-gradient(180deg, #150000, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* LOGIN CARD */
+.login-box {
+    background: rgba(15, 15, 15, 0.88);
+    padding: 40px;
+    border-radius: 16px;
+
+    width: 360px;
     text-align: center;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-    border: 1px solid #333;
+
+    border: 1px solid rgba(255, 0, 0, 0.28);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
 }
 
 .login-box h1 {
-    color: #ff4f4f;
-    margin-bottom: 25px;
+    color: #ff3b3b;
 }
 
-/* Inputs */
+/* INPUTS */
 .login-input {
     width: 100%;
     padding: 12px;
     margin-bottom: 18px;
+
     border-radius: 8px;
     border: 2px solid #333;
     background: #111;
+
     color: white;
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
 .login-input:focus {
-    border-color: #ff4f4f;
+    border-color: #ff3b3b;
+    box-shadow: 0 0 12px rgba(255, 50, 50, 0.5);
     outline: none;
-    box-shadow: 0 0 10px #ff4f4f;
 }
 
-/* Button */
+/* PASSWORD TOGGLE */
+.password-wrapper {
+    text-align: left;
+}
+
+.password-toggle-text {
+    font-size: 13px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.password-toggle-text:hover {
+    color: #fff;
+}
+
+/* LOGIN BUTTON */
 .login-btn {
     width: 100%;
     padding: 12px;
-    background: #ff4f4f;
+    background: #ff3b3b;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+
+    transition: 0.25s;
 }
 
 .login-btn:hover {
-    background: #ff2222;
+    background: #ff1f1f;
     transform: scale(1.03);
 }
 
-/* Error Text */
-.error-text {
-    margin-top: 15px;
-    color: #ff4f4f;
-    height: 20px;
+/* SIGNUP LINK */
+.link-signup {
+    color: #ff3b3b;
+    text-decoration: none;
+}
+
+.link-signup:hover {
+    text-decoration: underline;
 }

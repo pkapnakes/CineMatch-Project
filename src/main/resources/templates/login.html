@@ -5,24 +5,49 @@
     <title>Login - CineMatch</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body class="login-page">
 
 <div class="login-box">
     <h1>CineMatch</h1>
 
     <form action="/login" method="post">
-        <input class="login-input" type="text" name="username" placeholder="Username" required>
-        <input class="login-input" type="password" name="password" placeholder="Password" required>
 
+        <!-- Username -->
+        <input class="login-input" type="text" name="username" placeholder="Username" required>
+
+        <!-- Password with eye toggle -->
+        <div class="password-wrapper">
+            <input class="login-input" type="password" id="password" name="password" placeholder="Password" required>
+
+            <label class="password-toggle-text">
+                <input type="checkbox" onclick="togglePassword()" id="toggleCheck">
+                Εμφάνιση κωδικού πρόσβασης
+            </label>
+        </div>
+
+
+        <!-- Login button -->
         <button class="login-btn" type="submit">Login</button>
 
-        <!-- Show error -->
+        <!-- Info text -->
         <p class="error-text">
-            Εγγραφή
+            Δεν έχεις λογαριασμό;
+            <a href="/signup" class="link-signup">Εγγραφή</a>
         </p>
+
+
 
     </form>
 </div>
+
+<script>
+    function togglePassword() {
+        const field = document.getElementById("password");
+        field.type = field.type === "password" ? "text" : "password";
+    }
+</script>
+
 
 </body>
 </html>
