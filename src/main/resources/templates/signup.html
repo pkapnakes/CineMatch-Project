@@ -1,69 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
-    <title>Signup - CineMatch</title>
+    <title>CineMatch - Signup</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body class="login-page">
 
 <div class="login-box">
-    <h1>Εγγραφή στο CineMatch</h1>
+    <h1 class="login-title">Εγγραφή</h1>
 
     <form action="/signup" method="post">
-        <!-- Username -->
-        <input class="login-input" type="text" name="username" placeholder="Όνομα χρήστη" required>
 
-        <!-- Email -->
-        <input class="login-input" type="email" name="email" placeholder="Email" required>
+        <input type="text" name="username" class="login-input" placeholder="Username" required>
+        <input type="password" name="password" class="login-input" placeholder="Password" required>
 
-        <!-- Password -->
-        <div class="password-wrapper">
-            <input class="login-input" type="password" id="password" name="password"
-                   placeholder="Κωδικός πρόσβασης" required>
-
-            <label class="password-toggle-text">
-                <input type="checkbox" onclick="togglePassword()">
-                Εμφάνιση κωδικού πρόσβασης
-            </label>
-        </div>
-
-        <!-- Confirm password -->
-        <div class="password-wrapper">
-            <input class="login-input" type="password" id="confirmPassword" name="confirmPassword"
-                   placeholder="Επαλήθευση κωδικού" required>
-
-            <label class="password-toggle-text">
-                <input type="checkbox" onclick="toggleConfirmPassword()">
-                Εμφάνιση κωδικού πρόσβασης
-            </label>
-        </div>
-
-        <!-- Optional: αγαπημένο genre -->
-        <input class="login-input" type="text" name="favoriteGenre" placeholder="Αγαπημένο είδος (προαιρετικό)">
-
-        <!-- Signup button -->
-        <button class="login-btn" type="submit">Εγγραφή</button>
-
-        <!-- Back to login -->
-        <p class="error-text" style="margin-top: 18px;">
-            Έχεις ήδη λογαριασμό;
-            <a href="/login" class="link-signup">Σύνδεση</a>
-        </p>
+        <button type="submit" class="login-btn">Create Account</button>
     </form>
-</div>
 
-<script>
-    function togglePassword() {
-        const field = document.getElementById("password");
-        field.type = field.type === "password" ? "text" : "password";
-    }
-    function toggleConfirmPassword() {
-        const field = document.getElementById("confirmPassword");
-        field.type = field.type === "password" ? "text" : "password";
-    }
-</script>
+    <p class="signup-text">Έχεις ήδη λογαριασμό;
+        <a href="/login" class="link-signup">Σύνδεση</a>
+    </p>
+</div>
 
 </body>
 </html>
