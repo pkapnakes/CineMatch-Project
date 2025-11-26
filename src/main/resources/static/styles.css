@@ -1,84 +1,146 @@
+/* ======= GENERAL ======= */
 body {
-    background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
     margin: 0;
-}
-
-/* -------- Login Page -------- */
-
-.login-bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login-container {
-    background: #181818;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-}
-
-.login-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-}
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background: red;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-/* -------- Home Page -------- */
-
-header {
+/* ======= HEADER ======= */
+.header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
-    background: black;
+    background: #141414;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #222;
 }
 
-header input {
-    padding: 10px;
+.logo {
+    font-size: 28px;
+    margin: 0;
+    color: #ff4f4f;
+}
+
+/* ======= SEARCH BAR ======= */
+.search-bar {
     width: 250px;
-    border: none;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #555;
+    background: #1f1f1f;
+    color: white;
+    transition: 0.3s;
 }
 
+.search-bar:focus {
+    border-color: #ff4f4f;
+    outline: none;
+    box-shadow: 0 0 10px #ff4f4f;
+}
+
+/* ======= CATEGORY SECTION ======= */
 .category {
-    margin: 20px;
+    padding: 20px;
 }
 
+.category h2 {
+    margin-bottom: 10px;
+}
+
+/* ======= MOVIE ROW ======= */
 .movies-row {
     display: flex;
     gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
 }
 
 .movie-card {
+    min-width: 160px;
+    height: 230px;
     background: #222;
-    padding: 60px 20px;
-    border-radius: 8px;
-    width: 150px;
-    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
 }
-.user-info-box {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: #fff;
-    background: rgba(0, 0, 255, 0.4);
-    padding: 8px 12px;
+
+/* Hover effect */
+.movie-card:hover {
+    transform: scale(1.1);
+    background: #ff4f4f;
+}
+/* ====== LOGIN PAGE ====== */
+.login-page {
+    background: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Card */
+.login-box {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    border: 1px solid #333;
+}
+
+.login-box h1 {
+    color: #ff4f4f;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+.login-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
     border-radius: 8px;
-    font-size: 14px;
+    border: 2px solid #333;
+    background: #111;
+    color: white;
+    transition: 0.3s;
+}
+
+.login-input:focus {
+    border-color: #ff4f4f;
+    outline: none;
+    box-shadow: 0 0 10px #ff4f4f;
+}
+
+/* Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ff4f4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #ff2222;
+    transform: scale(1.03);
+}
+
+/* Error Text */
+.error-text {
+    margin-top: 15px;
+    color: #ff4f4f;
+    height: 20px;
 }
