@@ -20,10 +20,17 @@
     </properties>
 
     <dependencies>
-        <!-- ΜΟΝΟ WEB – ΧΩΡΙΣ JPA -->
+
+        <!-- Web (Controllers, REST, MVC) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Thymeleaf για templates (login.html, home.html) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -33,7 +40,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- JUnit -->
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

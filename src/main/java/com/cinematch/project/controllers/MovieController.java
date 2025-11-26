@@ -16,27 +16,23 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    // GET /movies
+    @GetMapping("/{id}")
+    public Movie getMovie(@PathVariable Long id) {
+        return movieService.getMovie(id);
+    }
+
     @GetMapping
     public List<Movie> getAllMovies() {
-        return movieService.findAll();
+        return movieService.getAllMovies();
     }
 
-    // GET /movies/{id}
-    @GetMapping("/{id}")
-    public Movie getMovieById(@PathVariable Long id) {
-        return movieService.findById(id);
-    }
-
-    // GET /movies/search?keyword=xxx
     @GetMapping("/search")
     public List<Movie> searchMovies(@RequestParam String keyword) {
-        return movieService.search(keyword);
+        return movieService.searchMovies(keyword);
     }
 
-    // GET /movies/trending
     @GetMapping("/trending")
     public List<Movie> getTrendingMovies() {
-        return movieService.findTrending();
+        return movieService.getTrendingMovies();
     }
 }
