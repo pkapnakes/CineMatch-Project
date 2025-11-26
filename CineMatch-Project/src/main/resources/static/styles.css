@@ -1,16 +1,15 @@
-/* ======= GLOBAL ======= */
+/* ===== GLOBAL ===== */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     color: white;
 
-    /* μοντέρνο deep-black UI */
     background: linear-gradient(180deg, #0a0a0a 0%, #000000 80%);
     background-attachment: fixed;
 }
 
-/* ======= HEADER ======= */
+/* ===== HEADER ===== */
 .header {
     display: flex;
     justify-content: space-between;
@@ -35,7 +34,7 @@ body {
     font-weight: bold;
 }
 
-/* ======= SEARCH ======= */
+/* ===== SEARCH BAR ===== */
 .search-bar {
     width: 250px;
     padding: 10px 16px;
@@ -54,7 +53,7 @@ body {
     outline: none;
 }
 
-/* ======= HERO ======= */
+/* ===== HERO SECTION ===== */
 .hero-section {
     height: 45vh;
     display: flex;
@@ -113,7 +112,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ======= SECTIONS ======= */
+/* ===== CATEGORY ===== */
 .category {
     padding: 30px 50px;
 }
@@ -123,29 +122,14 @@ body {
     font-size: 22px;
 }
 
-/* ======= HORIZONTAL MOVIE SCROLL ======= */
-.movies-row {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding: 25px 0 30px 0; /* extra space πάνω-κάτω */
-}
-
-
-.movies-row::-webkit-scrollbar {
-    height: 6px;
-}
-
+/* ===== MOVIES SCROLL ===== */
 .movies-row {
     display: flex;
     gap: 16px;
     overflow-x: auto;
 
-    /* χώρο για hover */
-    padding-top: 28px;
-    padding-bottom: 28px;
-
-    /* ⭐ σημαντικό: προσθέτει χώρο αριστερά να ΜΗΝ κόβονται */
+    padding-top: 25px;
+    padding-bottom: 35px;
     padding-left: 40px;
 }
 
@@ -158,113 +142,46 @@ body {
     border-radius: 10px;
 }
 
+/* ===== MOVIE CARD ===== */
 .movie-card {
     min-width: 165px;
-    height: 245px;
     background: #121212;
     border-radius: 12px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s ease;
+    flex-direction: column;
     cursor: pointer;
+
     border: 1px solid rgba(255, 0, 0, 0.15);
     box-shadow: 0 8px 22px rgba(0,0,0,0.6);
+
+    transition: 0.3s ease;
 }
 
 .movie-card:hover {
-    transform: translateY(-6px) scale(1.04);
+    transform: translateY(-6px) scale(1.05);
     border-color: rgba(255, 0, 0, 0.35);
     box-shadow: 0 15px 40px rgba(255, 15, 15, 0.25);
 }
 
-
-
-/* ======= LOGIN PAGE ======= */
-.login-page {
-    background: linear-gradient(180deg, #150000, #000);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* LOGIN CARD */
-.login-box {
-    background: rgba(15, 15, 15, 0.88);
-    padding: 40px;
-    border-radius: 16px;
-
-    width: 360px;
-    text-align: center;
-
-    border: 1px solid rgba(255, 0, 0, 0.28);
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
-}
-
-.login-box h1 {
-    color: #ff3b3b;
-}
-
-/* INPUTS */
-.login-input {
+.movie-poster {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 18px;
-
-    border-radius: 8px;
-    border: 2px solid #333;
-    background: #111;
-
-    color: white;
-    transition: 0.25s;
+    height: 245px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
 }
 
-.login-input:focus {
-    border-color: #ff3b3b;
-    box-shadow: 0 0 12px rgba(255, 50, 50, 0.5);
-    outline: none;
+.movie-info {
+    padding: 10px;
+    background: #000000aa;
 }
 
-/* PASSWORD TOGGLE */
-.password-wrapper {
-    text-align: left;
+.movie-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
 }
 
-.password-toggle-text {
-    font-size: 13px;
-    color: #aaa;
-    cursor: pointer;
-}
-
-.password-toggle-text:hover {
-    color: #fff;
-}
-
-/* LOGIN BUTTON */
-.login-btn {
-    width: 100%;
-    padding: 12px;
-    background: #ff3b3b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-
-    transition: 0.25s;
-}
-
-.login-btn:hover {
-    background: #ff1f1f;
-    transform: scale(1.03);
-}
-
-/* SIGNUP LINK */
-.link-signup {
-    color: #ff3b3b;
-    text-decoration: none;
-}
-
-.link-signup:hover {
-    text-decoration: underline;
+.movie-rating {
+    margin: 4px 0 0 0;
+    opacity: 0.75;
 }
