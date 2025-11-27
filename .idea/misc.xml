@@ -11,6 +11,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/CineMatch-Project/pom.xml" />
+        <option value="$PROJECT_DIR$/CineMatch/CineMatch-Project/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </set>
     </option>
