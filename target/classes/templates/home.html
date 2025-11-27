@@ -1,0 +1,42 @@
+<script>
+    // Smooth scroll
+    function scrollToTrending() {
+        document.getElementById("movies-section").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    // Search event
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            loadMovies(searchInput.value);
+        }
+    });
+
+    // TMDB → Load Movies
+    async function loadMovies(query) {
+        try {
+            const response = await fetch(`/tmdb/movies?query=${encodeURIComponent(query)}`);
+            const movies = await response.json();
+
+            const container = document.getElementById("movies-container");
+            container.innerHTML = "";
+
+            movies.forEach(movie => {
+                const card = document.createElement("div");
+                card.className = "movie-card";
+
+                card.innerHTML = `
+                    <img src="${movie.posterUrl}" alt="${movie.title}">
+                    <p class="movie-title">${movie.title}</p>
+                `;
+
+                container.appendChild(card);
+            });
+
+        } catch (err) {
+            console.error("Error loading movies:", err);
+        }
+    }
+</script>
