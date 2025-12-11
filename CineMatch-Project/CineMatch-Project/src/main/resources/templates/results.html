@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="el" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Αποτελέσματα Αναζήτησης</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body class="dark-theme">
+
+<header>
+    <a class="logo" href="/">🎬 CineMatch</a>
+
+    <div class="search-box">
+        <input id="searchInput" type="text"
+               placeholder="Search movies..."
+               th:value="${query}">
+        <button id="searchBtn" class="search-btn"><i class="fa fa-search"></i></button>
+    </div>
+</header>
+
+<section class="results">
+    <h2>Αποτελέσματα αναζήτησης για: "<span th:text="${query}"></span>"</h2>
+
+    <div id="resultsContainer" class="movies-grid">
+        <!-- Filled by JS -->
+    </div>
+</section>
+
+<script>
+    const query = new URLSearchParams(window.location.search).get("query");
+
+    fetch(`/api/search?query=${encodeURIComponent(query)}`)
+        .then(res => res.json())
+        .then(movies => {
+            const container = document.getElementById("resultsContainer");
+            container.innerHTML = "";
+
+            movies.forEach(m => {
+                container.innerHTML += `
+                    <a class="movie-card" href="/movie/${m.id}">
+                        <img src="${m.posterUrl}" alt="">
+                        <p>${m.title}</p>
+                    </a>`;
+            });
+        });
+</script>
+
+</body>
+</html>
