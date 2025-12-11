@@ -1,38 +1,58 @@
 package com.cinematch.project.controllers;
 
-import com.cinematch.project.models.Movie;
-import com.cinematch.project.services.MovieService;
-import org.springframework.web.bind.annotation.*;
+import com.cinematch.project.dto.MovieDto;
+import com.cinematch.project.services.TmdbService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/movies")
+@Controller
 public class MovieController {
 
-    private final MovieService movieService;
+    @Autowired
+    private TmdbService tmdbService;
 
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
+    @GetMapping("/api/trending")
+    @ResponseBody
+    public List<MovieDto> trending() throws Exception {
+        return tmdbService.getPopularMovies();
     }
 
-    @GetMapping("/{id}")
-    public Movie getMovie(@PathVariable Long id) {
-        return movieService.getMovie(id);
+    @GetMapping("/movie/{id}")
+    public String movieDetails(@PathVariable Long id, Model model) throws Exception {
+        MovieDto movie = tmdbService.getMovieDetails(id);
+        model.addAttribute("movie", movie);
+
+        model.addAttribute("cast", tmdbService.getMovieCast(id));
+        model.addAttribute("trailerKey", tmdbService.getMovieTrailer(id));
+        model.addAttribute("similar", tmdbService.getSimilarMovies(id));
+
+        // ⭐ NEW: Movie full details (runtime, genres, etc.)
+        model.addAttribute("details", movie);
+
+        // ⭐ NEW: Movie Reviews
+        model.addAttribute("reviews", tmdbService.getMovieReviews(id));
+
+        return "movie-details";
     }
 
-    @GetMapping
-    public List<Movie> getAllMovies() {
-        return movieService.getAllMovies();
+    // ⬇⬇ Add this (API for FE JS search)
+    @GetMapping("/api/search")
+    @ResponseBody
+    public List<MovieDto> apiSearch(@RequestParam("query") String query) throws Exception {
+        return tmdbService.searchMovies(query);
     }
 
+    // ⬇⬇ Add this (View for search results page)
     @GetMapping("/search")
-    public List<Movie> searchMovies(@RequestParam String keyword) {
-        return movieService.searchMovies(keyword);
-    }
-
-    @GetMapping("/trending")
-    public List<Movie> getTrendingMovies() {
-        return movieService.getTrendingMovies();
+    public String searchPage(@RequestParam("query") String query, Model model) {
+        model.addAttribute("query", query);
+        return "results";
     }
 }

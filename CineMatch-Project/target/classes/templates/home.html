@@ -1,88 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>CineMatch</title>
-    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+    <!-- Scripts -->
+    <script src="/js/home.js" defer></script>
 </head>
 
-<body>
+<body class="dark-theme">
 
-<!-- ===== HEADER ===== -->
-<header class="header glass-header">
-    <h1 class="logo">🎬 CineMatch</h1>
-    <input id="searchInput" class="search-bar" type="text" placeholder="Search movies...">
+<header>
+    <a class="logo">🎬 CineMatch</a>
+
+    <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search movies...">
+        <button id="searchBtn" type="submit" class="search-btn">
+            <i class="fa-solid fa-search"></i>
+        </button>
+    </div>
 </header>
 
-<!-- ===== HERO SECTION ===== -->
-<section class="hero-section">
-    <div class="hero-overlay"></div>
-
+<!-- HERO BANNER -->
+<section class="hero-section" id="hero"
+         style="background-image: url('');">
     <div class="hero-content">
-        <h1 class="hero-title">
-            Welcome to <span class="accent">CineMatch</span>
-        </h1>
-
-        <p class="hero-subtitle">
-            Discover, track and explore your personalized cinematic universe.
-        </p>
-
-        <button class="hero-btn" onclick="scrollToTrending()">Start Exploring</button>
+        <h2 id="hero-title">Movie Title</h2>
+        <p id="hero-overview">Overview goes here...</p>
+        <button id="hero-play">▶ Play</button>
     </div>
 </section>
 
-<!-- ===== TRENDING (API) ===== -->
-<section class="category" id="trending">
-    <h2>Movies</h2>
-    <div class="movies-row" id="trending-container">
-        <!-- API Movies appear here -->
-    </div>
+<!-- TRENDING ROW -->
+<section class="trending">
+    <h3>Trending Now</h3>
+    <div class="trending-container" id="trendingContainer"></div>
 </section>
-
-<script>
-
-    // Smooth scroll
-    function scrollToTrending() {
-        document.getElementById("trending").scrollIntoView({ behavior: "smooth" });
-    }
-
-    // Enter triggers search
-    document.getElementById("searchInput").addEventListener("keypress", function(e) {
-        if (e.key === "Enter") {
-            loadMovies(this.value);
-        }
-    });
-
-    // TMDB API loader
-    async function loadMovies(query) {
-        try {
-            const response = await fetch(`/tmdb/movies?query=${encodeURIComponent(query)}`);
-            const movies = await response.json();
-
-            const container = document.getElementById("trending-container");
-            container.innerHTML = "";
-
-            movies.forEach(movie => {
-                const card = document.createElement("div");
-                card.className = "movie-card";
-
-                card.innerHTML = `
-                    <img class="movie-poster" src="${movie.posterUrl}" alt="${movie.title}">
-                    <div class="movie-info">
-                        <p class="movie-title">${movie.title}</p>
-                        <p class="movie-rating">${movie.releaseDate}</p>
-                    </div>
-                `;
-
-                container.appendChild(card);
-            });
-
-        } catch (err) {
-            console.error("API error:", err);
-        }
-    }
-
-</script>
 
 </body>
 </html>

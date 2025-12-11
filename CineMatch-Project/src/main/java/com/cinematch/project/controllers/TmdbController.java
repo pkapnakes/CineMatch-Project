@@ -1,24 +1,31 @@
-package com.cinematch.project.controller;
+package com.cinematch.project.controllers;
 
 import com.cinematch.project.dto.MovieDto;
-import com.cinematch.project.service.TmdbService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.cinematch.project.services.TmdbService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/tmdb")
 public class TmdbController {
 
-    private final TmdbService tmdbService;
+    @Autowired
+    private TmdbService tmdbService;
 
-    public TmdbController(TmdbService tmdbService) {
-        this.tmdbService = tmdbService;
+    @GetMapping("/popular")
+    public List<MovieDto> getPopularMovies() throws Exception {
+        return tmdbService.getPopularMovies();
     }
 
-    @GetMapping("/tmdb/movies")
-    public List<MovieDto> searchMovies(@RequestParam String query) throws Exception {
+    @GetMapping("/movie/{id}")
+    public MovieDto getMovieDetails(@PathVariable Long id) throws Exception {
+        return tmdbService.getMovieDetails(id);
+    }
+
+    @GetMapping("/search")
+    public List<MovieDto> search(@RequestParam String query) throws Exception {
         return tmdbService.searchMovies(query);
     }
 }
