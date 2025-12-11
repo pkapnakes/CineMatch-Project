@@ -2,62 +2,67 @@
 <html lang="el">
 <head>
     <meta charset="UTF-8">
-    <title>Signup - CineMatch</title>
+    <title>Εγγραφή | CineMatch</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body class="background-gradient">
+<body class="auth-bg">
 
-<div class="login-container">
-    <h2 class="title">Εγγραφή στο CineMatch</h2>
+<!-- Hero Logo -->
+<div class="auth-hero-logo">🎬 CineMatch</div>
 
-    <form action="/signup" method="post">
+<div class="auth-wrapper">
+    <div class="auth-card">
 
-        <!-- Username -->
-        <input class="input-field" type="text" name="username" placeholder="Όνομα χρήστη" required>
+        <h2 class="auth-title">Εγγραφή</h2>
 
-        <!-- Email -->
-        <input class="input-field" type="email" name="email" placeholder="Email" required>
+        <form action="/signup" method="post">
 
-        <!-- Password -->
-        <input class="input-field" type="password" id="password" name="password"
-               placeholder="Κωδικός πρόσβασης" required>
+            <!-- USERNAME -->
+            <div class="form-group">
+                <input type="text" name="username" id="signupUsername" required>
+                <label for="signupUsername">Username</label>
+            </div>
 
-        <div class="checkbox-row">
-            <input type="checkbox" onclick="togglePassword()">
-            <label for="showPass">Εμφάνιση κωδικού πρόσβασης</label>
-        </div>
+            <!-- EMAIL -->
+            <div class="form-group">
+                <input type="email" name="email" id="signupEmail" required>
+                <label for="signupEmail">Email</label>
+            </div>
 
-        <!-- Confirm password -->
-        <input class="input-field" type="password" id="confirmPassword" name="confirmPassword"
-               placeholder="Επαλήθευση κωδικού" required>
+            <!-- PASSWORD -->
+            <div class="form-group">
+                <input type="password" name="password" id="signupPassword" required>
+                <label for="signupPassword">Password</label>
+            </div>
 
-        <div class="checkbox-row">
-            <input type="checkbox" onclick="toggleConfirmPassword()">
-            <label>Εμφάνιση επαλήθευσης κωδικού</label>
-        </div>
+            <!-- CONFIRM PASSWORD -->
+            <div class="form-group">
+                <input type="password" name="confirmPassword" id="signupConfirmPassword" required>
+                <label for="signupConfirmPassword">Confirm Password</label>
+            </div>
 
-        <!-- Optional: αγαπημένο genre -->
-        <input class="input-field" type="text" name="favoriteGenre" placeholder="Αγαπημένο είδος (προαιρετικό)">
+            <!-- Show Password Checkbox -->
+            <label class="show-pass">
+                <input type="checkbox"
+                       onclick="togglePassword('signupPassword'); togglePassword('signupConfirmPassword');">
+                Εμφάνιση κωδικού
+            </label>
 
-        <!-- Signup button -->
-        <button class="login-button" type="submit">Εγγραφή</button>
+            <button class="auth-btn primary-btn" type="submit">Εγγραφή</button>
 
-        <!-- Back to login -->
-        <p class="register-text" style="margin-top: 18px;">
-            Έχεις ήδη λογαριασμό;
-            <a href="/login">Σύνδεση</a>
-        </p>
-    </form>
+            <p class="switch-auth">Έχεις ήδη λογαριασμό;
+                <a href="/login">Σύνδεση</a>
+            </p>
+        </form>
+
+
+    </div>
 </div>
 
 <script>
-    function togglePassword() {
-        const field = document.getElementById("password");
-        field.type = field.type === "password" ? "text" : "password";
-    }
-    function toggleConfirmPassword() {
-        const field = document.getElementById("confirmPassword");
+    function togglePassword(id) {
+        const field = document.getElementById(id);
         field.type = field.type === "password" ? "text" : "password";
     }
 </script>

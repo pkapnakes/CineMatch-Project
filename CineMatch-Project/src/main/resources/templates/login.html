@@ -2,41 +2,52 @@
 <html lang="el">
 <head>
     <meta charset="UTF-8">
-    <title>CineMatch - Login</title>
+    <title>Σύνδεση | CineMatch</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body class="background-gradient">
+<body class="auth-bg">
 
-<div class="login-container">
-    <h2 class="title">CineMatch</h2>
+<!-- Hero Logo -->
+<div class="auth-hero-logo">🎬 CineMatch</div>
 
-    <form action="/login" method="post">
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2 class="auth-title">Σύνδεση</h2>
 
-        <input type="text" name="username" class="input-field" placeholder="Username" required>
+        <form action="/login" method="post">
 
-        <input type="password" name="password" id="passwordField" class="input-field" placeholder="Password" required>
+            <div class="form-group">
+                <input type="text" name="username" id="username" required>
+                <label for="username">Username</label>
+            </div>
 
-        <div class="checkbox-row">
-            <input type="checkbox" id="showPass" onclick="togglePassword()">
-            <label for="showPass">Εμφάνιση κωδικού πρόσβασης</label>
-        </div>
+            <div class="form-group">
+                <input type="password" name="password" id="loginPassword" required>
+                <label for="loginPassword">Password</label>
+            </div>
 
-        <button type="submit" class="login-button">Login</button>
-    </form>
+            <label class="show-pass">
+                <input type="checkbox" id="showPassLogin"> Εμφάνιση κωδικού
+            </label>
 
-    <p class="register-text">
-        Δεν έχεις λογαριασμό;
-        <a href="/signup">Εγγραφή</a>
-    </p>
+
+            <button class="auth-btn primary-btn">Σύνδεση</button>
+
+            <p class="switch-auth">Δεν έχεις λογαριασμό;
+                <a href="/signup" class="auth-link">Εγγραφή</a>
+            </p>
+        </form>
+    </div>
 </div>
 
 <script>
-    function togglePassword() {
-        let passField = document.getElementById("passwordField");
-        passField.type = passField.type === "password" ? "text" : "password";
-    }
+    document.getElementById("showPassLogin").addEventListener("change", function() {
+        const pwd = document.getElementById("loginPassword");
+        pwd.type = this.checked ? "text" : "password";
+    });
 </script>
+
 
 </body>
 </html>
