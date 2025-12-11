@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${movie.title}"></title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="dark-theme">
+
+<header>
+    <a class="logo" th:href="@{/}">🎬 CineMatch</a>
+</header>
+
+<div class="details-container">
+
+    <div class="poster-section">
+        <img th:src="${movie.posterUrl}" alt="poster">
+    </div>
+
+    <div class="movie-info">
+        <h1 th:text="${movie.title}"></h1>
+
+        <p class="overview" th:text="${movie.overview}"></p>
+
+        <h2>🎬 Trailer</h2>
+        <div class="trailer-wrapper">
+            <iframe th:if="${trailerKey != null}"
+                    th:src="'https://www.youtube.com/embed/' + ${trailerKey}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+
+            <p th:if="${trailerKey == null}">Trailer not available</p>
+        </div>
+
+        <h2>Cast</h2>
+        <div class="cast-wrapper">
+            <div class="cast-card" th:each="actor : ${cast}">
+                <img th:src="${actor.profileUrl}" alt="actor">
+                <span th:text="${actor.name}"></span>
+                <p th:text="${actor.character}"></p>
+            </div>
+        </div>
+
+        <h2>Similar Movies</h2>
+        <div class="similar-slider">
+            <div class="similar-card" th:each="m : ${similar}">
+                <a th:href="@{'/movie/' + ${m.id}}">
+                    <img th:src="${m.posterUrl}">
+                    <p th:text="${m.title}"></p>
+                </a>
+            </div>
+        </div>
+
+        <!-- --------------- NEW SECTIONS ADDED BELOW --------------- -->
+
+        <h2>More Info</h2>
+        <div class="extra-info">
+            <p><strong>Release Date:</strong> <span th:text="${details.releaseDate}"></span></p>
+            <p><strong>Runtime:</strong> <span th:text="${details.runtime}"></span> minutes</p>
+            <p><strong>Genres:</strong> <span th:text="${details.genres}"></span></p>
+            <p><strong>Rating:</strong> ⭐ <span th:text="${details.rating}"></span>/10</p>
+            <p><strong>Popularity:</strong> <span th:text="${details.popularity}"></span></p>
+        </div>
+
+        <h2>Critics & Reviews</h2>
+        <div class="reviews-section">
+            <p th:if="${#lists.isEmpty(reviews)}">No reviews available.</p>
+
+            <div class="review-card" th:each="r : ${reviews}">
+                <h3 th:text="${r.author}"></h3>
+                <p th:text="${r.content}"></p>
+
+                <p th:if="${r.rating != null}">
+                    <strong>Rating:</strong> <span th:text="${r.rating}"></span>/10
+                </p>
+            </div>
+        </div>
+
+        <h2>Production Info</h2>
+        <div class="financial-info">
+            <p><strong>Budget:</strong> $<span th:text="${details.budget}"></span></p>
+            <p><strong>Revenue:</strong> $<span th:text="${details.revenue}"></span></p>
+            <p><strong>Original Language:</strong> <span th:text="${details.language}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${details.status}"></span></p>
+        </div>
+
+        <!-- --------------- END OF ADDED CONTENT --------------- -->
+
+    </div>
+</div>
+
+</body>
+</html>
