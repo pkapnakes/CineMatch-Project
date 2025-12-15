@@ -1,32 +1,30 @@
 package com.cinematch.project.controllers;
 
+import com.cinematch.project.models.User;
+import com.cinematch.project.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Map;
-
 @Controller
 public class LoginController {
 
-    private static final Map<String, String> USERS = Map.of(
-            "sokratis", "12345",
-            "hasan", "12345",
-            "alex", "12345",
-            "panos", "12345",
-            "xrisa", "12345"
-    );
+    private final UserRepository userRepository;
+
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username,
-                            @RequestParam String password) {
+    public String handleLogin(@RequestParam String username,
+                              @RequestParam String password) {
 
-        String validPassword = USERS.get(username.toLowerCase());
+        User user = userRepository.findByUsername(username);
 
-        if (validPassword != null && validPassword.equals(password)) {
+        if (user != null && user.getPassword().equals(password)) {
             return "redirect:/home?username=" + username;
         }
 
-        return "redirect:/login?error=Invalid credentials";
+        return "redirect:/login?error=true";
     }
 }

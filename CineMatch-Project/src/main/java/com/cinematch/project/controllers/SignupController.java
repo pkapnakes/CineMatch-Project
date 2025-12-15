@@ -4,9 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.cinematch.project.models.User;
+import com.cinematch.project.repositories.UserRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SignupController {
+
+    private final UserRepository userRepository;
+
+    public SignupController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping("/signup")
     public String showSignupPage() {
@@ -24,6 +34,10 @@ public class SignupController {
         if (!password.equals(confirmPassword)) {
             return "redirect:/signup?error=password_mismatch";
         }
+
+        // αποθήκευση στη βάση
+        User user = new User(username, password, email, favoriteGenre);
+        userRepository.save(user);
 
         System.out.println("New user created: " + username + " (" + email + "), fav=" + favoriteGenre);
 
