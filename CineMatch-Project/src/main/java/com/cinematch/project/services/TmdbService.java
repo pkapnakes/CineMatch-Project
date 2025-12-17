@@ -6,6 +6,8 @@ import com.cinematch.project.dto.ReviewDto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
+import com.cinematch.project.dto.ActorDto;
+
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -174,4 +176,41 @@ public class TmdbService {
 
         return reviews;
     }
+    // ===============================
+// ⭐ POPULAR ACTORS (FOR FACE GAME)
+// ===============================
+    public List<ActorDto> getPopularActors() throws Exception {
+
+        String url = API_BASE + "/person/popular?api_key=" + apikey + "&language=en-US&page=1";
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .build();
+
+        HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        JsonNode results = mapper.readTree(response.body()).get("results");
+
+        List<ActorDto> actors = new ArrayList<>();
+
+        for (JsonNode a : results) {
+
+            // skip actors without photo
+            if (a.get("profile_path").isNull()) continue;
+
+            ActorDto dto = new ActorDto();
+            dto.setId(a.get("id").asLong());
+            dto.setName(a.get("name").asText());
+            dto.setImageUrl(IMG_BASE + a.get("profile_path").asText());
+
+            actors.add(dto);
+
+            // limit για performance (π.χ. 20 actors)
+            if (actors.size() == 20) break;
+        }
+
+        return actors;
+    }
+
 }

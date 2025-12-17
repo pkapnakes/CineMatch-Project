@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Εγγραφή | CineMatch</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="auth-bg">
+
+<!-- Hero Logo -->
+<div class="auth-hero-logo">🎬 CineMatch</div>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <h2 class="auth-title">Εγγραφή</h2>
+
+        <form action="/signup" method="post">
+
+            <!-- USERNAME -->
+            <div class="form-group">
+                <input type="text" name="username" id="signupUsername" required>
+                <label for="signupUsername">Username</label>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-group">
+                <input type="email" name="email" id="signupEmail" required>
+                <label for="signupEmail">Email</label>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-group">
+                <input type="password" name="password" id="signupPassword" required>
+                <label for="signupPassword">Password</label>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="form-group">
+                <input type="password" name="confirmPassword" id="signupConfirmPassword" required>
+                <label for="signupConfirmPassword">Confirm Password</label>
+            </div>
+
+            <!-- Show Password Checkbox -->
+            <label class="show-pass">
+                <input type="checkbox"
+                       onclick="togglePassword('signupPassword'); togglePassword('signupConfirmPassword');">
+                Εμφάνιση κωδικού
+            </label>
+
+            <button class="auth-btn primary-btn" type="submit">Εγγραφή</button>
+
+            <p class="switch-auth">Έχεις ήδη λογαριασμό;
+                <a href="/login">Σύνδεση</a>
+            </p>
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    function togglePassword(id) {
+        const field = document.getElementById(id);
+        field.type = field.type === "password" ? "text" : "password";
+    }
+</script>
+
+</body>
+</html>
