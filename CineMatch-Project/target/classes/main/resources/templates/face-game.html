@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Which Actor Am I?</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="dark-theme">
+
+<h2>Upload your photo</h2>
+
+<form id="faceForm">
+    <input type="file" id="faceInput" accept="image/*" required>
+    <button type="submit">Find My Actor</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    document.getElementById("faceForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const file = document.getElementById("faceInput").files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const res = await fetch("/api/face-match", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+
+        document.getElementById("result").innerHTML = `
+            <h3>You look like ${data.name}</h3>
+            <img src="${data.imageUrl}" width="250">
+            <p>Similarity: ${data.score.toFixed(2)}%</p>
+        `;
+    });
+</script>
+
+</body>
+</html>
