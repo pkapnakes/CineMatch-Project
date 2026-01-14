@@ -4,6 +4,50 @@
     <meta charset="UTF-8">
     <title>Εγγραφή | CineMatch</title>
     <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* 🎬 Custom styling για τα κουτάκια επιλογών */
+        .genre-group {
+            margin-top: 20px;
+        }
+
+        .genre-group label.title {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .genre-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .genre-option {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 8px 12px;
+            border: 1px solid #e50914;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .genre-option:hover {
+            background-color: #222;
+            border-color: #ff1e1e;
+        }
+
+        .genre-option input[type="checkbox"] {
+            accent-color: #e50914;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="auth-bg">
@@ -49,14 +93,43 @@
                 Εμφάνιση κωδικού
             </label>
 
+            <!-- Αγαπημένο είδος ταινίας -->
+            <div class="genre-group">
+                <label class="title">Αγαπημένο είδος ταινίας:</label>
+                <div class="genre-options">
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Action">
+                        Δράσης
+                    </label>
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Comedy">
+                        Κωμωδία
+                    </label>
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Drama">
+                        Δράμα
+                    </label>
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Horror">
+                        Τρόμου
+                    </label>
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Romance">
+                        Ρομαντική
+                    </label>
+                    <label class="genre-option">
+                        <input type="checkbox" name="favoriteGenre" value="Sci-Fi">
+                        Επιστημονικής Φαντασίας
+                    </label>
+                </div>
+            </div>
+
             <button class="auth-btn primary-btn" type="submit">Εγγραφή</button>
 
             <p class="switch-auth">Έχεις ήδη λογαριασμό;
                 <a href="/login">Σύνδεση</a>
             </p>
         </form>
-
-
     </div>
 </div>
 
