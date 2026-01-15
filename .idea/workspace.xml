@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="face recognition game">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/face-game.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/movie-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/results.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/search-results.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/ViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/ViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,37 +61,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.home.js.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;21-quiz-game&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CineMatchProjectApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.home.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.home.js.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.CineMatchProjectApplication.executor": "Run",
+    "git-widget-placeholder": "24-unit-tests",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
+    <configuration name="GenreParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinematch-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cinematch.project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cinematch.project" />
+      <option name="MAIN_CLASS_NAME" value="com.cinematch.project.GenreParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="CineMatch-Project" />
       <method v="2">
@@ -119,6 +118,11 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GenreParserTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -146,7 +150,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="face recognition game" />
-    <option name="LAST_COMMIT_MESSAGE" value="face recognition game" />
+    <MESSAGE value="etimo to quiz" />
+    <option name="LAST_COMMIT_MESSAGE" value="etimo to quiz" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

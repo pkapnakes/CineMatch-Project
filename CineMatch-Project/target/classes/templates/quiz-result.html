@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="dark-theme">
+
+<h2>✅ Ολοκληρώθηκε το Quiz!</h2>
+
+<p>
+    Χρήστης: <b th:text="${username}"></b>
+</p>
+
+<p>
+    Σκορ: <b th:text="${score}"></b> / <b th:text="${total}"></b>
+</p>
+
+<a class="game-btn" th:href="@{/home(username=${username})}">🏠 Πίσω στο Home</a>
+
+</body>
+</html>
