@@ -17,7 +17,7 @@
 
 <body class="dark-theme">
 
-<header>
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 25px;">
     <a class="logo">🎬 CineMatch</a>
 
     <button class="game-btn" onclick="window.location.href='/face-game'">
@@ -30,11 +30,23 @@
             <i class="fa-solid fa-search"></i>
         </button>
     </div>
+
+    <!-- ✅ Τα κουμπιά ήρθαν πιο μέσα και κοντά -->
+    <div style="display: flex; align-items: center; gap: 8px; margin-right: 30px;">
+        <button class="game-btn" onclick="window.location.href='/profile'">
+            👤 Το Προφίλ μου
+        </button>
+
+        <form action="/logout" method="post" style="margin: 0;">
+            <button class="game-btn" type="submit">
+                🚪 Αποσύνδεση
+            </button>
+        </form>
+    </div>
 </header>
 
 <!-- HERO BANNER -->
-<section class="hero-section" id="hero"
-         style="background-image: url('');">
+<section class="hero-section" id="hero" style="background-image: url('');">
     <div class="hero-content">
         <h2 id="hero-title">Movie Title</h2>
         <p id="hero-overview">Overview goes here...</p>

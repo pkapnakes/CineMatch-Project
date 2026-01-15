@@ -4,21 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="face recognition game">
+    <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="user profile &amp; logout btn">
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/ProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/ProfileController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/SignupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/SignupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/SignupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dropdownmenu" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,12 +49,12 @@
     &quot;assignee&quot;: &quot;elenasa403-creator&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/pkapnakes/CineMatch-Project.git&quot;,
-    &quot;accountId&quot;: &quot;b84d7063-7ddd-460d-b5b9-d2c1315874f8&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/pkapnakes/CineMatch-Project.git",
+    "accountId": "9070a3a8-f5cf-41b5-99f2-6b2f0b6cbc52"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -54,22 +74,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CineMatchProjectApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dropdownmenuu",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;UserProfile&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="CineMatch-Project" />
@@ -98,10 +119,21 @@
       <option name="presentableId" value="Default" />
       <updated>1765897366838</updated>
     </task>
+    <task id="LOCAL-00001" summary="face recognition game">
+      <option name="closed" value="true" />
+      <created>1768430536648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768430536648</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="face recognition game" />
-    <option name="LAST_COMMIT_MESSAGE" value="face recognition game" />
+    <MESSAGE value="Merge pull request #20 from pkapnakes/dropdownmenuu&#10;&#10;DropDownMenu" />
+    <MESSAGE value="user profile &amp; logout btn" />
+    <option name="LAST_COMMIT_MESSAGE" value="user profile &amp; logout btn" />
   </component>
 </project>
