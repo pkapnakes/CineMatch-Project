@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body class="dark-theme">
+
+<h2 th:text="'Quiz - ' + ${genre}"></h2>
+
+<form th:action="@{/quiz/submit}" method="post">
+
+  <!-- κρατάμε το username hidden για να το ξέρει ο controller -->
+  <input type="hidden" name="username" th:value="${username}"/>
+
+  <div th:each="q, iter : ${questions}">
+    <h3 th:text="${iter.index + 1} + '. ' + ${q.question}"></h3>
+
+    <!-- Σημαντικό: name = questionId (π.χ. 12) -->
+    <label>
+      <input type="radio" th:name="${q.id}" value="A" required>
+      <span th:text="${q.optionA}"></span>
+    </label><br>
+
+    <label>
+      <input type="radio" th:name="${q.id}" value="B">
+      <span th:text="${q.optionB}"></span>
+    </label><br>
+
+    <label>
+      <input type="radio" th:name="${q.id}" value="C">
+      <span th:text="${q.optionC}"></span>
+    </label><br>
+
+    <label>
+      <input type="radio" th:name="${q.id}" value="D">
+      <span th:text="${q.optionD}"></span>
+    </label>
+
+    <hr>
+  </div>
+
+  <button type="submit" class="game-btn">✅ Υποβολή</button>
+</form>
+
+
+</body>
+</html>

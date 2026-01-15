@@ -47,6 +47,9 @@ public class User {
         return email;
     }
 
+    public String getFavoriteGenre() {return favoriteGenre;}
+
+
     // ===== SETTERS =====
     public void setId(Long id) {
         this.id = id;
@@ -63,6 +66,9 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setFavoriteGenre(String favoriteGenre) {this.favoriteGenre = favoriteGenre;}
+
 }
 
 
