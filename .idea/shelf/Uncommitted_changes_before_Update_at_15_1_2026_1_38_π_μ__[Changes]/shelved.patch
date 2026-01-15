@@ -1,0 +1,244 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"14914f5e-194b-422c-a729-df33b5fbac31\" name=\"Changes\" comment=\"face recognition game\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/cinematch-project.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/FaceMatchController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/GameController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/FaceMatchMemoryService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/FaceService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/dto/ActorDto.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/dto/FaceMatchResult.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/face-game.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/FaceMatchController.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/GameController.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/dto/ActorDto.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/dto/FaceMatchResult.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/FaceMatchMemoryService.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/FaceService.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/home.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/search.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/styles.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/face-game.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/login.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/movie-details.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/results.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/search-results.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/templates/face-game.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/encodings.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/TmdbService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/TmdbService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/ActorController.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/ActorController.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/TmdbService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/TmdbService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;elenasa403-creator&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/pkapnakes/CineMatch-Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;b84d7063-7ddd-460d-b5b9-d2c1315874f8&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"36vqOzLHoZvBN6slI3uX3Up3kC5\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;17-υλοποίηση-ποιος-ηθοποιος-εισαι&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"CineMatch-Project\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"CineMatch-Project\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"14914f5e-194b-422c-a729-df33b5fbac31\" name=\"Changes\" comment=\"\" />\r\n      <created>1765897366838</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1765897366838</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"face recognition game\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"face recognition game\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ b/.idea/workspace.xml	(date 1768341640101)
+@@ -4,137 +4,154 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="face recognition game">
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/cinematch-project.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/FaceMatchController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/GameController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/FaceMatchMemoryService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/FaceService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/dto/ActorDto.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/dto/FaceMatchResult.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/face-game.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/FaceMatchController.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/GameController.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/dto/ActorDto.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/dto/FaceMatchResult.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/FaceMatchMemoryService.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/FaceService.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/application.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/home.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/search.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/styles.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/face-game.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/login.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/movie-details.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/results.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/search-results.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/face-game.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/TmdbService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/services/TmdbService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/ActorController.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/application.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/ActorController.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/application.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/TmdbService.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/services/TmdbService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" afterDir="false" />
++    <list default="true" id="73862212-38c9-4ba0-a93d-6179d203e747" name="Changes" comment="ginetai eggrafh kai sindesi toy xristi stin vasi">
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/application.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/home.js" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/js/search.js" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/static/styles.css" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/face-game.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/login.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/movie-details.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/results.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/search-results.html" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/signup.html" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++        <option value="Interface" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="2-github-issue-υλοποίηση-βάσης-δεδομένων-για-αποθήκευση-νέων-χρηστών" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+   &quot;lastFilter&quot;: {
+     &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;elenasa403-creator&quot;
++    &quot;assignee&quot;: &quot;cHasanDede&quot;
+   }
+ }</component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/pkapnakes/CineMatch-Project.git&quot;,
+-    &quot;accountId&quot;: &quot;b84d7063-7ddd-460d-b5b9-d2c1315874f8&quot;
++    &quot;accountId&quot;: &quot;ce1b4059-f58c-49ba-91db-593ea7d069cf&quot;
+   }
+ }</component>
+-  <component name="MavenImportPreferences">
+-    <option name="generalSettings">
+-      <MavenGeneralSettings>
+-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+-      </MavenGeneralSettings>
+-    </option>
+-  </component>
+-  <component name="ProblemsViewState">
+-    <option name="selectedTabId" value="CurrentFile" />
+-  </component>
+   <component name="ProjectColorInfo">{
+   &quot;customColor&quot;: &quot;&quot;,
+-  &quot;associatedIndex&quot;: 8
++  &quot;associatedIndex&quot;: 4
+ }</component>
+-  <component name="ProjectId" id="36vqOzLHoZvBN6slI3uX3Up3kC5" />
++  <component name="ProjectId" id="36t64PAt2HoiiWYFdyzHYW0rniw" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+-    &quot;Application.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;17-υλοποίηση-ποιος-ηθοποιος-εισαι&quot;,
++    &quot;Spring Boot.CineMatchProjectApplication.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+   <component name="RunManager">
+-    <configuration default="true" type="JetRunConfigurationType">
+-      <module name="CineMatch-Project" />
++    <configuration name="CineMatchProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
++      <module name="cinematch-project" />
++      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cinematch.project.CineMatchProjectApplication" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+-      <module name="CineMatch-Project" />
+-      <option name="filePath" />
+-      <method v="2" />
+-    </configuration>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
++        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
++        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+       </set>
+     </attachedChunks>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="" />
+-      <created>1765897366838</created>
++      <changelist id="73862212-38c9-4ba0-a93d-6179d203e747" name="Changes" comment="" />
++      <created>1765813335388</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1765897366838</updated>
++      <updated>1765813335388</updated>
++      <workItem from="1765813341028" duration="4571000" />
++      <workItem from="1765835818153" duration="3036000" />
++      <workItem from="1765897849809" duration="310000" />
++      <workItem from="1765999572733" duration="378000" />
++      <workItem from="1766071431060" duration="1599000" />
++      <workItem from="1766181626177" duration="462000" />
++      <workItem from="1767883535324" duration="2634000" />
++      <workItem from="1768340757435" duration="838000" />
+     </task>
++    <task id="LOCAL-00001" summary="ginetai eggrafh kai sindesi toy xristi stin vasi">
++      <option name="closed" value="true" />
++      <created>1765837376914</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1765837376915</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="face recognition game" />
+-    <option name="LAST_COMMIT_MESSAGE" value="face recognition game" />
++    <MESSAGE value="ginetai eggrafh kai sindesi toy xristi stin vasi" />
++    <option name="LAST_COMMIT_MESSAGE" value="ginetai eggrafh kai sindesi toy xristi stin vasi" />
++  </component>
++  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
++    <option name="sizePresets">
++      <list>
++        <SizePreset>
++          <option name="caption" value="Phone" />
++          <option name="height" value="568" />
++          <option name="width" value="320" />
++        </SizePreset>
++        <SizePreset>
++          <option name="caption" value="Tablet" />
++          <option name="height" value="1024" />
++          <option name="width" value="768" />
++        </SizePreset>
++        <SizePreset>
++          <option name="caption" value="Desktop" />
++          <option name="height" value="900" />
++          <option name="width" value="1440" />
++        </SizePreset>
++      </list>
++    </option>
+   </component>
+ </project>
+\ No newline at end of file

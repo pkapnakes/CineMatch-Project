@@ -1,0 +1,1797 @@
+Index: .idea/modules.xml
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+--- a/.idea/modules.xml	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/CineMatch-Project/cinematch-project.iml" filepath="$PROJECT_DIR$/CineMatch-Project/cinematch-project.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: CineMatch-Project/target/classes/main/resources/templates/face-game.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/face-game.html b/CineMatch-Project/target/classes/main/resources/templates/face-game.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/face-game.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,45 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Which Actor Am I?</title>
+-    <link rel="stylesheet" href="/styles.css">
+-</head>
+-<body class="dark-theme">
+-
+-<h2>Upload your photo</h2>
+-
+-<form id="faceForm">
+-    <input type="file" id="faceInput" accept="image/*" required>
+-    <button type="submit">Find My Actor</button>
+-</form>
+-
+-<div id="result"></div>
+-
+-<script>
+-    document.getElementById("faceForm").addEventListener("submit", async (e) => {
+-        e.preventDefault();
+-
+-        const file = document.getElementById("faceInput").files[0];
+-        if (!file) return;
+-
+-        const formData = new FormData();
+-        formData.append("file", file);
+-
+-        const res = await fetch("/api/face-match", {
+-            method: "POST",
+-            body: formData
+-        });
+-
+-        const data = await res.json();
+-
+-        document.getElementById("result").innerHTML = `
+-            <h3>You look like ${data.name}</h3>
+-            <img src="${data.imageUrl}" width="250">
+-            <p>Similarity: ${data.score.toFixed(2)}%</p>
+-        `;
+-    });
+-</script>
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/templates/login.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/login.html b/CineMatch-Project/target/classes/main/resources/templates/login.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/login.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,53 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="el">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Σύνδεση | CineMatch</title>
+-    <link rel="stylesheet" href="/styles.css">
+-</head>
+-
+-<body class="auth-bg">
+-
+-<!-- Hero Logo -->
+-<div class="auth-hero-logo">🎬 CineMatch</div>
+-
+-<div class="auth-wrapper">
+-    <div class="auth-card">
+-        <h2 class="auth-title">Σύνδεση</h2>
+-
+-        <form action="/login" method="post">
+-
+-            <div class="form-group">
+-                <input type="text" name="username" id="username" required>
+-                <label for="username">Username</label>
+-            </div>
+-
+-            <div class="form-group">
+-                <input type="password" name="password" id="loginPassword" required>
+-                <label for="loginPassword">Password</label>
+-            </div>
+-
+-            <label class="show-pass">
+-                <input type="checkbox" id="showPassLogin"> Εμφάνιση κωδικού
+-            </label>
+-
+-
+-            <button class="auth-btn primary-btn">Σύνδεση</button>
+-
+-            <p class="switch-auth">Δεν έχεις λογαριασμό;
+-                <a href="/signup" class="auth-link">Εγγραφή</a>
+-            </p>
+-        </form>
+-    </div>
+-</div>
+-
+-<script>
+-    document.getElementById("showPassLogin").addEventListener("change", function() {
+-        const pwd = document.getElementById("loginPassword");
+-        pwd.type = this.checked ? "text" : "password";
+-    });
+-</script>
+-
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/static/js/home.js
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/static/js/home.js b/CineMatch-Project/target/classes/main/resources/static/js/home.js
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/static/js/home.js	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,92 +0,0 @@
+-document.addEventListener("DOMContentLoaded", function () {
+-
+-    const searchBtn = document.getElementById("searchBtn");
+-    const searchInput = document.getElementById("searchInput");
+-
+-    // 🔍 Click Search Button
+-    searchBtn.addEventListener("click", performSearch);
+-
+-    // 🔍 Press Enter = Search
+-    searchInput.addEventListener("keypress", (e) => {
+-        if (e.key === "Enter") {
+-            e.preventDefault();
+-            performSearch();
+-        }
+-    });
+-
+-    function performSearch() {
+-        let query = searchInput.value.trim();
+-        if (query.length > 0) {
+-            window.location.href = "/search?query=" + encodeURIComponent(query);
+-        }
+-    }
+-
+-    // Load Hero + Trending
+-    loadHomeContent();
+-});
+-
+-
+-// ===============================
+-// Load Trending Movies
+-// ===============================
+-function loadHomeContent() {
+-    fetch("/api/trending")
+-        .then(res => res.json())
+-        .then(data => {
+-            renderHero(data[0]);
+-            renderTrending(data);
+-        })
+-        .catch(err => console.error("Error loading trending:", err));
+-}
+-
+-
+-// ===============================
+-// Render Hero Section (with fallback)
+-// ===============================
+-function renderHero(movie) {
+-    let heroSection = document.querySelector(".hero-section");
+-
+-    const bg = movie.backdropUrl
+-        ? movie.backdropUrl
+-        : (movie.posterUrl
+-            ? `https://image.tmdb.org/t/p/original${movie.posterUrl}`
+-            : "/images/no-poster-bg.jpg"); // fallback background!
+-
+-    heroSection.style.backgroundImage = `url('${bg}')`;
+-    heroSection.style.backgroundSize = "cover";
+-    heroSection.style.backgroundPosition = "center";
+-
+-    document.getElementById("hero-title").textContent = movie.title;
+-    document.getElementById("hero-overview").textContent = movie.overview;
+-
+-    document.getElementById("hero-play").onclick = () => {
+-        window.location.href = "/movie/" + movie.id;
+-    };
+-}
+-
+-
+-// ===============================
+-// Render Trending Movies (with fallback)
+-// ===============================
+-function renderTrending(movies) {
+-    const container = document.querySelector(".trending-container");
+-    container.innerHTML = "";
+-
+-    movies.forEach(m => {
+-        const poster = m.posterUrl
+-            ? `https://image.tmdb.org/t/p/w500${m.posterUrl}`
+-            : "/images/no-poster.png"; // fallback poster
+-
+-        const card = document.createElement("div");
+-        card.classList.add("movie-card");
+-
+-        card.innerHTML = `
+-            <a href="/movie/${m.id}">
+-                <img src="${poster}" alt="${m.title}">
+-                <p>${m.title}</p>
+-            </a>
+-        `;
+-
+-        container.appendChild(card);
+-    });
+-}
+Index: CineMatch-Project/target/classes/main/resources/static/js/search.js
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/static/js/search.js b/CineMatch-Project/target/classes/main/resources/static/js/search.js
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/static/js/search.js	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,28 +0,0 @@
+-document.addEventListener("DOMContentLoaded", function () {
+-    const params = new URLSearchParams(window.location.search);
+-    const query = params.get("query");
+-
+-    fetch(`/api/search?query=${query}`)
+-        .then(response => response.json())
+-        .then(movies => {
+-            const container = document.getElementById("resultsContainer");
+-
+-            container.innerHTML = "";
+-
+-            movies.forEach(movie => {
+-                const poster = movie.posterUrl
+-                    ? `https://image.tmdb.org/t/p/w500${movie.posterUrl}`
+-                    : "/images/no-poster.png";  // fallback placeholder
+-
+-                const movieCard = `
+-        <a href="/movie/${movie.id}" class="search-card">
+-            <img src="${poster}" alt="${movie.title}">
+-            <p>${movie.title}</p>
+-        </a>
+-    `;
+-
+-                container.innerHTML += movieCard;
+-            });
+-
+-        });
+-});
+Index: CineMatch-Project/target/classes/main/resources/templates/results.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/results.html b/CineMatch-Project/target/classes/main/resources/templates/results.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/results.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,54 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="el" xmlns:th="http://www.thymeleaf.org">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Αποτελέσματα Αναζήτησης</title>
+-
+-    <link rel="stylesheet"
+-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+-
+-    <link rel="stylesheet" th:href="@{/styles.css}">
+-</head>
+-
+-<body class="dark-theme">
+-
+-<header>
+-    <a class="logo" href="/">🎬 CineMatch</a>
+-
+-    <div class="search-box">
+-        <input id="searchInput" type="text"
+-               placeholder="Search movies..."
+-               th:value="${query}">
+-        <button id="searchBtn" class="search-btn"><i class="fa fa-search"></i></button>
+-    </div>
+-</header>
+-
+-<section class="results">
+-    <h2>Αποτελέσματα αναζήτησης για: "<span th:text="${query}"></span>"</h2>
+-
+-    <div id="resultsContainer" class="movies-grid">
+-        <!-- Filled by JS -->
+-    </div>
+-</section>
+-
+-<script>
+-    const query = new URLSearchParams(window.location.search).get("query");
+-
+-    fetch(`/api/search?query=${encodeURIComponent(query)}`)
+-        .then(res => res.json())
+-        .then(movies => {
+-            const container = document.getElementById("resultsContainer");
+-            container.innerHTML = "";
+-
+-            movies.forEach(m => {
+-                container.innerHTML += `
+-                    <a class="movie-card" href="/movie/${m.id}">
+-                        <img src="${m.posterUrl}" alt="">
+-                        <p>${m.title}</p>
+-                    </a>`;
+-            });
+-        });
+-</script>
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/static/styles.css
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/static/styles.css b/CineMatch-Project/target/classes/main/resources/static/styles.css
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/static/styles.css	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,1182 +0,0 @@
+-/* ===========================
+-   GLOBAL PAGE THEME
+-=========================== */
+-body {
+-    margin: 0;
+-    padding: 0;
+-    font-family: Arial, sans-serif;
+-    background-color: #000;
+-    color: white;
+-    overflow-x: hidden;
+-}
+-
+-a {
+-    text-decoration: none;
+-    color: inherit;
+-}
+-
+-.logo {
+-    font-size: 24px;
+-    font-weight: bold;
+-    color: #e50914;
+-    margin-left: 20px;
+-}
+-
+-/* ===========================
+-   HEADER + SEARCH
+-=========================== */
+-header {
+-    display: flex;
+-    align-items: center;
+-    justify-content: space-between;
+-    padding: 20px;
+-}
+-
+-.search-box {
+-    display: flex;
+-    align-items: center;
+-    background-color: #111;
+-    border-radius: 8px;
+-    padding: 5px 10px;
+-}
+-
+-.search-box input {
+-    padding: 8px;
+-    border: none;
+-    outline: none;
+-    width: 220px;
+-    background: transparent;
+-    color: white;
+-}
+-
+-.search-box button {
+-    background: #e50914;
+-    border: none;
+-    padding: 8px 12px;
+-    color: white;
+-    cursor: pointer;
+-    border-radius: 5px;
+-    font-weight: bold;
+-}
+-
+-/* ===========================
+-   HERO SECTION
+-=========================== */
+-.hero-section {
+-    position: relative;
+-    height: 65vh;
+-    width: 100%;
+-    background-size: cover;
+-    background-position: center;
+-    display: flex;
+-    align-items: flex-end;
+-}
+-
+-.hero-content {
+-    padding: 40px;
+-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+-    width: 100%;
+-}
+-
+-.hero-content h2 {
+-    font-size: 40px;
+-    margin: 0;
+-}
+-
+-.hero-content p {
+-    font-size: 18px;
+-    width: 45%;
+-    opacity: 0.9;
+-}
+-
+-.hero-content button {
+-    margin-top: 15px;
+-    background: #e50914;
+-    border: none;
+-    padding: 12px 22px;
+-    font-size: 18px;
+-    border-radius: 6px;
+-    cursor: pointer;
+-}
+-
+-/* ===========================
+-   TRENDING SECTION
+-=========================== */
+-.trending {
+-    margin-top: 30px;
+-    padding: 10px 25px;
+-}
+-
+-.trending h3 {
+-    font-size: 22px;
+-    margin-bottom: 10px;
+-}
+-
+-.trending-container {
+-    display: flex;
+-    gap: 15px;
+-    overflow-x: auto;
+-    padding-bottom: 20px;
+-}
+-
+-.trending-container::-webkit-scrollbar {
+-    height: 8px;
+-    background: #111;
+-}
+-
+-.trending-container::-webkit-scrollbar-thumb {
+-    background: #444;
+-    border-radius: 10px;
+-}
+-
+-.movie-card {
+-    width: 160px;
+-    height: 240px;
+-    flex: 0 0 auto;
+-    transition: transform 0.25s;
+-    cursor: pointer;
+-}
+-
+-.movie-card img {
+-    width: 100%;
+-    height: 100%;
+-    border-radius: 6px;
+-}
+-
+-.movie-card:hover {
+-    transform: scale(1.18);
+-}
+-
+-/* ========= MOVIE DETAILS PAGE ========= */
+-
+-.details-container {
+-    display: flex;
+-    padding: 60px 80px;
+-    gap: 50px;
+-    min-height: 100vh;
+-}
+-
+-.poster-section img {
+-    width: 380px;
+-    border-radius: 12px;
+-    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+-}
+-
+-.movie-info {
+-    max-width: 900px;
+-}
+-
+-.movie-info h1 {
+-    font-size: 48px;
+-    font-weight: bold;
+-    margin-bottom: 15px;
+-}
+-
+-.overview {
+-    font-size: 18px;
+-    line-height: 1.6;
+-    color: #bfbfbf;
+-    margin-bottom: 35px;
+-}
+-
+-/* Trailer Button */
+-.play-btn {
+-    display: inline-block;
+-    background: #e50914;
+-    padding: 14px 30px;
+-    border-radius: 6px;
+-    font-size: 20px;
+-    text-decoration: none;
+-    color: white;
+-    font-weight: bold;
+-    transition: 0.2s;
+-}
+-.play-btn:hover {
+-    background: #b00710;
+-    transform: scale(1.05);
+-}
+-
+-/* CAST */
+-.cast-wrapper {
+-    display: flex;
+-    overflow-x: auto;
+-    gap: 18px;
+-    padding: 10px 0 30px;
+-}
+-
+-.cast-card {
+-    width: 120px;
+-    text-align: center;
+-}
+-
+-.cast-card img {
+-    width: 120px;
+-    height: 150px;
+-    border-radius: 8px;
+-    object-fit: cover;
+-}
+-
+-/* Similar Movies */
+-.similar-slider {
+-    display: flex;
+-    gap: 20px;
+-    overflow-x: auto;
+-    padding-top: 10px;
+-}
+-
+-.similar-card {
+-    width: 160px;
+-    text-align: center;
+-    transition: 0.2s ease;
+-}
+-
+-.similar-card img {
+-    width: 160px;
+-    height: 240px;
+-    border-radius: 10px;
+-    object-fit: cover;
+-}
+-
+-.similar-card:hover {
+-    transform: scale(1.07);
+-    cursor: pointer;
+-}
+-
+-.similar-card p {
+-    margin-top: 6px;
+-    font-size: 14px;
+-    color: #e6e6e6;
+-}
+-
+-/* Page background */
+-body.dark-theme {
+-    background-color: #000;
+-    color: white;
+-}
+-
+-
+-/* ===========================
+-   CAST CAROUSEL
+-=========================== */
+-.cast-container {
+-    margin-top: 20px;
+-    overflow-x: auto;
+-    display: flex;
+-    gap: 15px;
+-}
+-
+-.cast-container::-webkit-scrollbar {
+-    display: none;
+-}
+-
+-.cast-card {
+-    width: 90px;
+-    text-align: center;
+-}
+-
+-.cast-card img {
+-    border-radius: 50%;
+-    width: 85px;
+-    height: 85px;
+-}
+-
+-.cast-card span {
+-    display: block;
+-    margin-top: 6px;
+-    font-size: 14px;
+-}
+-
+-/* ===========================
+-   TRAILER SECTION
+-=========================== */
+-.trailer-frame {
+-    width: 100%;
+-    height: 380px;
+-    margin-top: 25px;
+-    border: none;
+-    border-radius: 10px;
+-}
+-
+-/* ===========================
+-   SIMILAR MOVIES
+-=========================== */
+-.similar-movies {
+-    margin-top: 30px;
+-}
+-
+-.similar-movies h3 {
+-    font-size: 22px;
+-    margin-bottom: 10px;
+-}
+-
+-/* ===========================
+-   RESPONSIVE MOBILE FIXES
+-=========================== */
+-@media (max-width: 768px) {
+-    .hero-section {
+-        height: 50vh;
+-    }
+-
+-    .hero-content p {
+-        width: 100%;
+-        font-size: 16px;
+-    }
+-
+-    .movie-details-container {
+-        flex-direction: column;
+-        align-items: center;
+-    }
+-
+-    .movie-info p {
+-        width: 90%;
+-    }
+-}
+-.movie-container {
+-    display: flex;
+-    align-items: flex-start;
+-    gap: 40px;
+-    margin-top: 40px;
+-    padding: 20px;
+-}
+-
+-.poster-section .poster {
+-    width: 350px;
+-    border-radius: 10px;
+-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+-}
+-
+-.trailer-section {
+-    flex: 1;
+-}
+-
+-.trailer-section h2 {
+-    margin-bottom: 10px;
+-    color: #e50914;
+-}
+-
+-.trailer {
+-    width: 100%;
+-    height: 450px;
+-    border-radius: 12px;
+-}
+-.trailer-wrapper iframe {
+-    width: 100%;
+-    height: 420px;
+-    border-radius: 12px;
+-    margin: 20px 0;
+-}
+-/* ---------- AUTH PAGES (login / signup) ---------- */
+-
+-.auth-body {
+-    min-height: 100vh;
+-    display: flex;
+-    flex-direction: column;
+-    background: radial-gradient(circle at top, #262626 0, #000 55%, #000 100%);
+-}
+-
+-.auth-header {
+-    padding: 20px 40px;
+-    display: flex;
+-    align-items: center;
+-    justify-content: flex-start;
+-}
+-
+-/* wrapper που κεντράρει την κάρτα */
+-.auth-bg {
+-    display: flex;
+-    flex-direction: column;
+-    align-items: center;
+-    justify-content: center;
+-    height: 100vh;
+-}
+-
+-.auth-wrapper {
+-    margin-top: 20px;
+-    display: flex;
+-    align-items: center;
+-    justify-content: center;
+-    width: 100%;
+-}
+-
+-
+-/* Η "κάρτα" του login/signup */
+-.auth-card {
+-    background: rgba(15, 15, 15, 0.92);
+-    border-radius: 16px;
+-    padding: 32px 40px;
+-    max-width: 420px;
+-    width: 100%;
+-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+-    border: 1px solid rgba(255, 255, 255, 0.06);
+-}
+-
+-.auth-card h1 {
+-    margin: 0 0 24px;
+-    font-size: 28px;
+-    font-weight: 700;
+-}
+-
+-/* Φόρμες */
+-.auth-form {
+-    display: flex;
+-    flex-direction: column;
+-    gap: 16px;
+-    margin-bottom: 18px;
+-}
+-
+-/* Floating Label Fields */
+-.form-group {
+-    position: relative;
+-    margin-bottom: 18px;
+-    width: 100%;
+-}
+-
+-.form-group input {
+-    width: 100%;
+-    background: #111;
+-    border: 1px solid #333;
+-    padding: 14px 12px 6px 12px;
+-    border-radius: 6px;
+-    font-size: 15px;
+-    color: #fff;
+-    outline: none;
+-    transition: 0.3s ease;
+-}
+-
+-.form-group label {
+-    position: absolute;
+-    top: 50%;
+-    left: 12px;
+-    transform: translateY(-50%);
+-    color: #888;
+-    font-size: 14px;
+-    pointer-events: none;
+-    transition: 0.3s ease;
+-}
+-
+-/* When focused or not empty */
+-.form-group input:focus,
+-.form-group input:not(:placeholder-shown) {
+-    border-color: #e50914;
+-    box-shadow: 0 0 12px #e5091477;
+-}
+-
+-.form-group input:focus + label,
+-.form-group input:not(:placeholder-shown) + label {
+-    top: 4px;
+-    font-size: 11px;
+-    color: #e50914;
+-    transform: translateY(0);
+-}
+-
+-
+-/* Κουμπί */
+-.auth-btn {
+-    margin-top: 8px;
+-    width: 100%;
+-    padding: 10px 16px;
+-    border-radius: 999px;
+-    border: none;
+-    background: #e50914;
+-    color: #fff;
+-    font-weight: 600;
+-    font-size: 15px;
+-    cursor: pointer;
+-    transition: background 0.2s ease, transform 0.1s ease;
+-}
+-
+-.auth-btn:hover {
+-    background: #f6121d;
+-    transform: translateY(-1px);
+-}
+-
+-/* Links / footer text */
+-.auth-footer-text {
+-    font-size: 13px;
+-    color: #808080;
+-}
+-
+-.auth-link {
+-    color: #fff;
+-    font-weight: 500;
+-    text-decoration: none;
+-}
+-
+-.auth-link:hover {
+-    text-decoration: underline;
+-}
+-
+-/* Μηνύματα */
+-.auth-error {
+-    background: rgba(229, 9, 20, 0.12);
+-    border: 1px solid rgba(229, 9, 20, 0.5);
+-    color: #ff8088;
+-    font-size: 13px;
+-    padding: 8px 10px;
+-    border-radius: 6px;
+-    margin-bottom: 12px;
+-}
+-
+-.auth-success {
+-    background: rgba(42, 189, 89, 0.12);
+-    border: 1px solid rgba(42, 189, 89, 0.5);
+-    color: #7af79a;
+-    font-size: 13px;
+-    padding: 8px 10px;
+-    border-radius: 6px;
+-    margin-bottom: 12px;
+-}
+-
+-/* Responsive */
+-@media (max-width: 600px) {
+-    .auth-card {
+-        padding: 24px 20px;
+-        border-radius: 12px;
+-    }
+-}
+-/* Glass effect */
+-.glass {
+-    backdrop-filter: blur(16px);
+-    background: rgba(20,20,20,0.65);
+-    border: 1px solid rgba(255,255,255,0.08);
+-}
+-
+-/* Subtext */
+-.auth-sub {
+-    color: #bbbbbb;
+-    font-size: 14px;
+-    margin-top: -12px;
+-    margin-bottom: 24px;
+-}
+-
+-/* Neon red button */
+-.primary-btn {
+-    background: linear-gradient(90deg, #e50914, #b1060f);
+-    box-shadow: 0 0 12px #e50914aa;
+-}
+-
+-.primary-btn:hover {
+-    box-shadow: 0 0 20px #e50914dd;
+-    transform: translateY(-2px);
+-}
+-
+-/* Show password eye button */
+-.password-group {
+-    position: relative;
+-}
+-
+-.toggle-password {
+-    position: absolute;
+-    right: 12px;
+-    top: 34px;
+-    background: none;
+-    border: none;
+-    cursor: pointer;
+-    color: #999;
+-    font-size: 18px;
+-}
+-
+-.toggle-password:hover {
+-    color: #e50914;
+-}
+-.show-pass {
+-    display: flex;
+-    align-items: center;
+-    font-size: 13px;
+-    margin-top: 6px;
+-    opacity: .85;
+-    cursor: pointer;
+-}
+-
+-.show-pass input {
+-    margin-right: 6px;
+-}
+-.auth-bg {
+-    height: 100vh;
+-    display: flex;
+-    justify-content: center;
+-    align-items: center;
+-    background: radial-gradient(circle at center, #222 0%, #000 65%);
+-}
+-
+-.auth-card {
+-    width: 420px;
+-    padding: 35px;
+-    background: rgba(0,0,0,0.85);
+-    border-radius: 12px;
+-    border: 1px solid rgba(255,0,0,0.25);
+-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.35);
+-    animation: fadeIn .6s;
+-}
+-
+-.auth-title {
+-    text-align: center;
+-    color: #ff2b2b;
+-    font-size: 28px;
+-    margin-bottom: 20px;
+-}
+-
+-.form-group {
+-    margin-bottom: 18px;
+-}
+-
+-.form-group input {
+-    width: 100%;
+-    padding: 12px 14px;
+-    border-radius: 6px;
+-    background: #191919;
+-    border: 1px solid #333;
+-    color: white;
+-}
+-
+-.show-pass {
+-    font-size: 14px;
+-    display: flex;
+-    align-items: center;
+-    margin-bottom: 12px;
+-    cursor: pointer;
+-}
+-
+-.show-pass input {
+-    margin-right: 6px;
+-}
+-
+-.switch-auth {
+-    text-align: center;
+-    margin-top: 12px;
+-}
+-
+-.switch-auth a {
+-    color: #ff2b2b;
+-    transition: 0.2s;
+-}
+-
+-.switch-auth a:hover {
+-    text-decoration: underline;
+-}
+-.auth-body {
+-    background-color: #000 !important;
+-}
+-/* ---------- AUTH PAGE FULL SCREEN CENTER ---------- */
+-.auth-page {
+-    background: #000;
+-    min-height: 100vh;
+-    width: 100vw;
+-    margin: 0;
+-    padding: 0;
+-    display: flex;
+-    justify-content: center;
+-    align-items: center;
+-}
+-
+-.auth-container {
+-    display: flex;
+-    justify-content: center;
+-    align-items: center;
+-    width: 100%;
+-}
+-
+-/* ---------- LOGIN / SIGNUP CARD ---------- */
+-.auth-card {
+-    background: rgba(10, 10, 10, 0.95);
+-    padding: 35px;
+-    width: 420px;
+-    border-radius: 12px;
+-    border: 1px solid rgba(255,0,0,0.25);
+-    box-shadow: 0 0 28px rgba(255,0,0,0.35);
+-    animation: fadeIn .6s ease-out;
+-}
+-
+-.auth-title {
+-    text-align: center;
+-    color: #e50914;
+-    font-size: 26px;
+-    margin-bottom: 20px;
+-}
+-
+-/* Smooth animation */
+-@keyframes fadeIn {
+-    from { opacity: 0; transform: translateY(10px); }
+-    to   { opacity: 1; transform: translateY(0); }
+-}
+-.auth-logo {
+-    text-align: center;
+-    font-size: 32px;
+-    color: #e50914;
+-    margin-bottom: 16px;
+-    font-weight: bold;
+-    pointer-events: none; /* δεν είναι clickable */
+-    text-shadow: 0 0 14px #e50914aa;
+-}
+-
+-.auth-logo span {
+-    color: #e50914;
+-}
+-
+-
+-.auth-logo:hover {
+-    transform: scale(1.07);
+-}
+-.auth-hero-logo {
+-    width: 100%;
+-    text-align: center;
+-    font-size: 58px;
+-    font-weight: 900;
+-    color: #e50914;
+-    margin-top: 70px;
+-    text-shadow: 0 0 25px rgba(229, 9, 20, 0.7);
+-    letter-spacing: 1px;
+-    user-select: none; /* Να μην επιλέγεται */
+-}
+-/* ===========================
+-   AUTH PAGE ANIMATIONS
+-=========================== */
+-
+-/* CineMatch logo glowing pulse */
+-.auth-hero-logo {
+-    animation: pulseGlow 2.2s infinite ease-in-out;
+-}
+-
+-@keyframes pulseGlow {
+-    0% {
+-        filter: drop-shadow(0 0 6px #e50914);
+-        opacity: 0.95;
+-    }
+-    50% {
+-        filter: drop-shadow(0 0 22px #ff1a1a);
+-        opacity: 1;
+-    }
+-    100% {
+-        filter: drop-shadow(0 0 6px #e50914);
+-        opacity: 0.95;
+-    }
+-}
+-
+-/* Auth card fade-in */
+-.auth-card {
+-    opacity: 0;
+-    transform: translateY(15px);
+-    animation: fadeUp .7s ease forwards;
+-}
+-
+-@keyframes fadeUp {
+-    from {
+-        opacity: 0;
+-        transform: translateY(25px);
+-    }
+-    to {
+-        opacity: 1;
+-        transform: translateY(0);
+-    }
+-}
+-/* ===========================
+-   AUTH INPUT HOVER / FOCUS EFFECTS
+-=========================== */
+-
+-.form-group input {
+-    background: #111;
+-    border: 1px solid #2a2a2a;
+-    border-radius: 6px;
+-    padding: 12px;
+-    color: white;
+-    width: 100%;
+-    transition: border 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+-}
+-
+-.form-group input::placeholder {
+-    color: #777;
+-    transition: color 0.3s ease;
+-}
+-
+-.form-group input:hover {
+-    border-color: #d20b11;
+-    background: #151515;
+-}
+-
+-.form-group input:focus {
+-    border-color: #e50914;
+-    background: #1b1b1b;
+-    box-shadow: 0 0 10px #e50914aa, inset 0 0 8px #e5091466;
+-}
+-
+-.form-group input:focus::placeholder {
+-    color: #999;
+-}
+-/* Neon button effects */
+-.auth-btn, .btn-primary {
+-    background: linear-gradient(90deg, #e50914, #b1060f);
+-    border: none;
+-    width: 100%;
+-    padding: 12px;
+-    border-radius: 6px;
+-    color: #fff;
+-    font-weight: 600;
+-    font-size: 16px;
+-    cursor: pointer;
+-    transition: 0.25s ease-in-out;
+-    box-shadow: 0 0 10px #e5091433;
+-}
+-
+-.auth-btn:hover, .btn-primary:hover {
+-    box-shadow: 0 0 18px #e50914cc;
+-    transform: translateY(-3px);
+-}
+-
+-.auth-btn:active, .btn-primary:active {
+-    transform: scale(0.98);
+-}
+-header {
+-    width: 100%;
+-}
+-
+-.hero-section {
+-    width: 100%;
+-    height: 65vh;
+-}
+-
+-.trending-container img {
+-    width: 160px;
+-    height: 240px;
+-    border-radius: 8px;
+-}
+-
+-.trending-container {
+-    display: flex;
+-    overflow-x: auto;
+-    gap: 15px;
+-    padding: 0 20px 20px;
+-}
+-
+-.movie-card {
+-    flex: 0 0 auto;
+-    cursor: pointer;
+-}
+-
+-body {
+-    overflow-x: hidden;
+-}
+-.search-title {
+-    margin: 30px;
+-    font-size: 26px;
+-    font-weight: bold;
+-}
+-
+-.results-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+-    gap: 18px;
+-    padding: 20px 40px;
+-}
+-
+-.results-grid img {
+-    width: 100%;
+-    height: 240px;
+-    border-radius: 10px;
+-    object-fit: cover;
+-    transition: transform 0.25s ease;
+-}
+-
+-.results-grid img:hover {
+-    transform: scale(1.12);
+-}
+-.search-title {
+-    font-size: 24px;
+-    font-weight: bold;
+-    padding: 20px 40px;
+-}
+-
+-.search-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+-    gap: 18px;
+-    padding: 0 40px 60px;
+-}
+-
+-.search-grid img {
+-    width: 100%;
+-    border-radius: 10px;
+-    transition: 0.25s;
+-    cursor: pointer;
+-}
+-
+-.search-grid img:hover {
+-    transform: scale(1.15);
+-}
+-.movies-grid {
+-    display: flex;
+-    gap: 15px;
+-    overflow-x: auto;
+-    padding: 20px;
+-}
+-
+-.movies-grid img {
+-    width: 160px;
+-    border-radius: 10px;
+-    transition: transform .3s;
+-}
+-
+-.movies-grid img:hover {
+-    transform: scale(1.15);
+-}
+-.movie-grid {
+-    display: flex;
+-    flex-wrap: wrap;
+-    gap: 20px;
+-}
+-
+-.movie-card img {
+-    width: 200px;
+-    border-radius: 10px;
+-    transition: transform 0.2s;
+-}
+-
+-.movie-card img:hover {
+-    transform: scale(1.08);
+-}
+-
+-.results {
+-    padding: 20px;
+-    margin-top: 120px;
+-}
+-
+-.results h2 {
+-    font-size: 26px;
+-    color: #fff;
+-    margin-bottom: 20px;
+-}
+-
+-.movies-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+-    gap: 20px;
+-}
+-
+-.movie-card {
+-    display: flex;
+-    flex-direction: column;
+-    text-decoration: none;
+-    color: #ddd;
+-    transition: transform .3s;
+-}
+-
+-.movie-card img {
+-    width: 100%;
+-    border-radius: 8px;
+-    object-fit: cover;
+-}
+-
+-.movie-card:hover {
+-    transform: scale(1.08);
+-    cursor: pointer;
+-}
+-.movie-card img {
+-    width: 100%;
+-    height: 240px; /* 🔥 fixed height for clean grid */
+-    border-radius: 8px;
+-    object-fit: cover;
+-    margin-bottom: 10px; /* 🔥 space for title */
+-}
+-
+-.movie-card p {
+-    font-size: 14px;
+-    color: #fff;
+-    margin-top: 5px;
+-    text-align: center;
+-    min-height: 40px; /* 🔥 reserved space for all titles */
+-}
+-/* SEARCH RESULT GRID LIKE NETFLIX */
+-.search-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+-    gap: 22px;
+-    padding: 80px 40px 60px;
+-}
+-
+-.search-card a {
+-    display: flex;
+-    flex-direction: column;
+-    align-items: center;
+-    color: #fff;
+-}
+-
+-.search-card img {
+-    width: 100%;
+-    aspect-ratio: 2 / 3;
+-    border-radius: 10px;
+-    object-fit: cover;
+-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+-}
+-
+-.search-card img:hover {
+-    transform: scale(1.15);
+-    box-shadow: 0 0 25px rgba(229, 9, 20, 0.5);
+-}
+-
+-.search-card p {
+-    margin-top: 10px;
+-    font-size: 14px;
+-    font-weight: 600;
+-    text-align: center;
+-    min-height: 38px;
+-}
+-.search-card {
+-    display: flex;
+-    flex-direction: column;
+-    align-items: center;
+-}
+-
+-.search-card p {
+-    margin-top: 8px;
+-    font-size: 14px;
+-    font-weight: 500;
+-    text-align: center;
+-    min-height: 40px;
+-    width: 100%;
+-    overflow: hidden;
+-    white-space: nowrap;
+-    text-overflow: ellipsis;
+-}
+-/* Search Results Layout Improvements */
+-.search-title {
+-    margin: 120px 40px 20px;
+-    font-size: 28px;
+-    font-weight: bold;
+-    color: white;
+-}
+-
+-.search-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+-    gap: 25px;
+-    padding: 10px 40px 60px;
+-    justify-items: center;
+-}
+-
+-.search-card {
+-    display: flex;
+-    flex-direction: column;
+-    align-items: center;
+-    transition: transform .25s, filter .25s;
+-}
+-
+-.search-card img {
+-    width: 180px;
+-    height: 270px;
+-    object-fit: cover;
+-    border-radius: 8px;
+-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+-}
+-
+-.search-card p {
+-    margin-top: 10px;
+-    font-size: 15px;
+-    font-weight: 600;
+-    text-align: center;
+-    color: #eee;
+-    width: 90%;
+-    white-space: nowrap;
+-    overflow: hidden;
+-    text-overflow: ellipsis;
+-    min-height: 20px;
+-}
+-
+-/* Hover Zoom */
+-.search-card:hover {
+-    transform: scale(1.12);
+-    filter: brightness(1.2);
+-    cursor: pointer;
+-}
+-/* Search Results Layout */
+-.search-title {
+-    margin: 120px 40px 20px;
+-    font-size: 28px;
+-    font-weight: bold;
+-    color: white;
+-}
+-
+-.search-grid {
+-    display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+-    gap: 25px;
+-    padding: 10px 40px 60px;
+-    justify-items: center;
+-}
+-
+-.search-card {
+-    display: flex;
+-    flex-direction: column;
+-    align-items: center;
+-    transition: transform .25s, filter .25s;
+-}
+-
+-.search-card img {
+-    width: 180px;
+-    height: 270px;
+-    object-fit: cover;
+-    border-radius: 8px;
+-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+-}
+-
+-.search-card p {
+-    margin-top: 10px;
+-    font-size: 15px;
+-    font-weight: 600;
+-    text-align: center;
+-    color: #eee;
+-    width: 90%;
+-    white-space: nowrap;
+-    overflow: hidden;
+-    text-overflow: ellipsis;
+-    min-height: 20px;
+-}
+-
+-/* Hover Animation */
+-.search-card:hover {
+-    transform: scale(1.12);
+-    filter: brightness(1.2);
+-    cursor: pointer;
+-}
+-body {
+-    outline: 5px solid red;
+-}
+-.movie-extra-info,
+-.movie-reviews,
+-.movie-financial {
+-    margin: 40px 0;
+-    padding-left: 340px;
+-    max-width: 900px;
+-}
+-
+-.movie-extra-info ul,
+-.movie-financial ul {
+-    list-style: none;
+-    padding: 0;
+-}
+-
+-.movie-extra-info li,
+-.movie-financial li {
+-    margin: 6px 0;
+-    font-size: 17px;
+-}
+-
+-.review-card {
+-    background: rgba(255, 255, 255, 0.05);
+-    padding: 15px;
+-    margin: 20px 0;
+-    border-radius: 10px;
+-}
+-.review-card h3 {
+-    margin-bottom: 10px;
+-}
+-.review-card p {
+-    opacity: 0.85;
+-}
+-.divider {
+-    border: none;
+-    border-top: 1px solid rgba(255,255,255,0.2);
+-    margin: 40px 0;
+-}
+-
+-
+-
+-
+Index: CineMatch-Project/target/classes/main/resources/templates/signup.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/signup.html b/CineMatch-Project/target/classes/main/resources/templates/signup.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/signup.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,71 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="el">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Εγγραφή | CineMatch</title>
+-    <link rel="stylesheet" href="/styles.css">
+-</head>
+-
+-<body class="auth-bg">
+-
+-<!-- Hero Logo -->
+-<div class="auth-hero-logo">🎬 CineMatch</div>
+-
+-<div class="auth-wrapper">
+-    <div class="auth-card">
+-
+-        <h2 class="auth-title">Εγγραφή</h2>
+-
+-        <form action="/signup" method="post">
+-
+-            <!-- USERNAME -->
+-            <div class="form-group">
+-                <input type="text" name="username" id="signupUsername" required>
+-                <label for="signupUsername">Username</label>
+-            </div>
+-
+-            <!-- EMAIL -->
+-            <div class="form-group">
+-                <input type="email" name="email" id="signupEmail" required>
+-                <label for="signupEmail">Email</label>
+-            </div>
+-
+-            <!-- PASSWORD -->
+-            <div class="form-group">
+-                <input type="password" name="password" id="signupPassword" required>
+-                <label for="signupPassword">Password</label>
+-            </div>
+-
+-            <!-- CONFIRM PASSWORD -->
+-            <div class="form-group">
+-                <input type="password" name="confirmPassword" id="signupConfirmPassword" required>
+-                <label for="signupConfirmPassword">Confirm Password</label>
+-            </div>
+-
+-            <!-- Show Password Checkbox -->
+-            <label class="show-pass">
+-                <input type="checkbox"
+-                       onclick="togglePassword('signupPassword'); togglePassword('signupConfirmPassword');">
+-                Εμφάνιση κωδικού
+-            </label>
+-
+-            <button class="auth-btn primary-btn" type="submit">Εγγραφή</button>
+-
+-            <p class="switch-auth">Έχεις ήδη λογαριασμό;
+-                <a href="/login">Σύνδεση</a>
+-            </p>
+-        </form>
+-
+-
+-    </div>
+-</div>
+-
+-<script>
+-    function togglePassword(id) {
+-        const field = document.getElementById(id);
+-        field.type = field.type === "password" ? "text" : "password";
+-    }
+-</script>
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/templates/search-results.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/search-results.html b/CineMatch-Project/target/classes/main/resources/templates/search-results.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/search-results.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,21 +0,0 @@
+-<!DOCTYPE html>
+-<html xmlns:th="http://www.thymeleaf.org">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Search Results</title>
+-    <link rel="stylesheet" href="/styles.css">
+-    <script src="/js/search.js" defer></script>
+-</head>
+-<body>
+-
+-<h2 class="search-title">Results for: "<span th:text="${query}"></span>"</h2>
+-
+-<div id="resultsContainer" class="search-grid"></div>
+-
+-<script>
+-    const query = "[[${query}]]";
+-    loadSearchResults(query);
+-</script>
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/templates/movie-details.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/movie-details.html b/CineMatch-Project/target/classes/main/resources/templates/movie-details.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/movie-details.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,95 +0,0 @@
+-<!DOCTYPE html>
+-<html xmlns:th="http://www.thymeleaf.org">
+-<head>
+-    <meta charset="UTF-8">
+-    <title th:text="${movie.title}"></title>
+-    <link rel="stylesheet" th:href="@{/styles.css}">
+-</head>
+-<body class="dark-theme">
+-
+-<header>
+-    <a class="logo" th:href="@{/}">🎬 CineMatch</a>
+-</header>
+-
+-<div class="details-container">
+-
+-    <div class="poster-section">
+-        <img th:src="${movie.posterUrl}" alt="poster">
+-    </div>
+-
+-    <div class="movie-info">
+-        <h1 th:text="${movie.title}"></h1>
+-
+-        <p class="overview" th:text="${movie.overview}"></p>
+-
+-        <h2>🎬 Trailer</h2>
+-        <div class="trailer-wrapper">
+-            <iframe th:if="${trailerKey != null}"
+-                    th:src="'https://www.youtube.com/embed/' + ${trailerKey}"
+-                    frameborder="0"
+-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+-                    allowfullscreen>
+-            </iframe>
+-
+-            <p th:if="${trailerKey == null}">Trailer not available</p>
+-        </div>
+-
+-        <h2>Cast</h2>
+-        <div class="cast-wrapper">
+-            <div class="cast-card" th:each="actor : ${cast}">
+-                <img th:src="${actor.profileUrl}" alt="actor">
+-                <span th:text="${actor.name}"></span>
+-                <p th:text="${actor.character}"></p>
+-            </div>
+-        </div>
+-
+-        <h2>Similar Movies</h2>
+-        <div class="similar-slider">
+-            <div class="similar-card" th:each="m : ${similar}">
+-                <a th:href="@{'/movie/' + ${m.id}}">
+-                    <img th:src="${m.posterUrl}">
+-                    <p th:text="${m.title}"></p>
+-                </a>
+-            </div>
+-        </div>
+-
+-        <!-- --------------- NEW SECTIONS ADDED BELOW --------------- -->
+-
+-        <h2>More Info</h2>
+-        <div class="extra-info">
+-            <p><strong>Release Date:</strong> <span th:text="${details.releaseDate}"></span></p>
+-            <p><strong>Runtime:</strong> <span th:text="${details.runtime}"></span> minutes</p>
+-            <p><strong>Genres:</strong> <span th:text="${details.genres}"></span></p>
+-            <p><strong>Rating:</strong> ⭐ <span th:text="${details.rating}"></span>/10</p>
+-            <p><strong>Popularity:</strong> <span th:text="${details.popularity}"></span></p>
+-        </div>
+-
+-        <h2>Critics & Reviews</h2>
+-        <div class="reviews-section">
+-            <p th:if="${#lists.isEmpty(reviews)}">No reviews available.</p>
+-
+-            <div class="review-card" th:each="r : ${reviews}">
+-                <h3 th:text="${r.author}"></h3>
+-                <p th:text="${r.content}"></p>
+-
+-                <p th:if="${r.rating != null}">
+-                    <strong>Rating:</strong> <span th:text="${r.rating}"></span>/10
+-                </p>
+-            </div>
+-        </div>
+-
+-        <h2>Production Info</h2>
+-        <div class="financial-info">
+-            <p><strong>Budget:</strong> $<span th:text="${details.budget}"></span></p>
+-            <p><strong>Revenue:</strong> $<span th:text="${details.revenue}"></span></p>
+-            <p><strong>Original Language:</strong> <span th:text="${details.language}"></span></p>
+-            <p><strong>Status:</strong> <span th:text="${details.status}"></span></p>
+-        </div>
+-
+-        <!-- --------------- END OF ADDED CONTENT --------------- -->
+-
+-    </div>
+-</div>
+-
+-</body>
+-</html>
+Index: CineMatch-Project/target/classes/main/resources/application.properties
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/application.properties b/CineMatch-Project/target/classes/main/resources/application.properties
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/application.properties	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,11 +0,0 @@
+-spring.datasource.url=jdbc:mysql://localhost:3306/cinematch
+-spring.datasource.username=root
+-spring.datasource.password=
+-
+-spring.jpa.hibernate.ddl-auto=update
+-spring.jpa.show-sql=true
+-
+-facepp.api.key=Sosxce8AcIjBkqW-D6eWCdfMx_o-HZCc
+-facepp.api.secret=_Ff9lU53vQnQnAD-27eIRDxP7XqpnqbI
+-facepp.detect.url=https://api-us.faceplusplus.com/facepp/v3/detect
+-facepp.compare.url=https://api-us.faceplusplus.com/facepp/v3/compare
+Index: CineMatch-Project/target/classes/main/resources/templates/home.html
+===================================================================
+diff --git a/CineMatch-Project/target/classes/main/resources/templates/home.html b/CineMatch-Project/target/classes/main/resources/templates/home.html
+deleted file mode 100644
+--- a/CineMatch-Project/target/classes/main/resources/templates/home.html	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
++++ /dev/null	(revision 94babbc133201013af8344c0ba7c1bc7de60fcb8)
+@@ -1,52 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>CineMatch</title>
+-
+-    <!-- Font Awesome Icons -->
+-    <link rel="stylesheet"
+-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+-
+-    <!-- Custom Styles -->
+-    <link rel="stylesheet" th:href="@{/styles.css}">
+-
+-    <!-- Scripts -->
+-    <script src="/js/home.js" defer></script>
+-</head>
+-
+-<body class="dark-theme">
+-
+-<header>
+-    <a class="logo">🎬 CineMatch</a>
+-
+-    <button class="game-btn" onclick="window.location.href='/face-game'">
+-        🎭 Which Actor Am I?
+-    </button>
+-
+-    <div class="search-box">
+-        <input id="searchInput" type="text" placeholder="Search movies...">
+-        <button id="searchBtn" type="submit" class="search-btn">
+-            <i class="fa-solid fa-search"></i>
+-        </button>
+-    </div>
+-</header>
+-
+-<!-- HERO BANNER -->
+-<section class="hero-section" id="hero"
+-         style="background-image: url('');">
+-    <div class="hero-content">
+-        <h2 id="hero-title">Movie Title</h2>
+-        <p id="hero-overview">Overview goes here...</p>
+-        <button id="hero-play">▶ Play</button>
+-    </div>
+-</section>
+-
+-<!-- TRENDING ROW -->
+-<section class="trending">
+-    <h3>Trending Now</h3>
+-    <div class="trending-container" id="trendingContainer"></div>
+-</section>
+-
+-</body>
+-</html>

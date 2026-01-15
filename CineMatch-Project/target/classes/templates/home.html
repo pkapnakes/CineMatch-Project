@@ -12,7 +12,8 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
 
     <!-- Scripts -->
-    <script src="/js/home.js" defer></script>
+    <script th:src="@{/js/home.js}" defer></script>
+
 </head>
 
 <body class="dark-theme">
@@ -24,6 +25,14 @@
         🎭 Which Actor Am I?
     </button>
 
+    <a class="game-btn"
+       th:href="@{/quiz(username=${username})}">
+        🧠 Κάνε το Quiz
+    </a>
+
+
+
+
     <div class="search-box">
         <input id="searchInput" type="text" placeholder="Search movies...">
         <button id="searchBtn" type="submit" class="search-btn">
@@ -31,6 +40,33 @@
         </button>
     </div>
 </header>
+
+<div class="quiz-summary" th:if="${lastAttempt != null}">
+    <h3>🧠 Τελευταίο Quiz</h3>
+
+    <p>
+        Είδος:
+        <b th:text="${lastAttempt.genre}"></b>
+    </p>
+
+    <p>
+        Σκορ:
+        <b th:text="${lastAttempt.score}"></b>
+        /
+        <b th:text="${lastAttempt.totalQuestions}"></b>
+    </p>
+
+    <p>
+        Ημερομηνία:
+        <span th:text="${#temporals.format(lastAttempt.createdAt, 'dd/MM/yyyy HH:mm')}"></span>
+    </p>
+
+    <a class="game-btn"
+       th:href="@{/quiz(username=${username})}">
+        🔁 Ξανακάνε Quiz
+    </a>
+</div>
+
 
 <!-- HERO BANNER -->
 <section class="hero-section" id="hero"
