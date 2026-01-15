@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="user profile &amp; logout btn">
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LogoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/ProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/ProfileController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/profile.html" afterDir="false" />
+    <list default="true" id="14914f5e-194b-422c-a729-df33b5fbac31" name="Changes" comment="Merge branch 'master' of https://github.com/pkapnakes/CineMatch-Project into UserProfile&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;CineMatch-Project/src/main/java/com/cinematch/project/models/User.java&#10;#&#9;CineMatch-Project/target/classes/com/cinematch/project/models/User.class&#10;#&#9;CineMatch-Project/target/classes/main/resources/templates/home.html&#10;#&#9;target/classes/templates/profile.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/controllers/SignupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/java/com/cinematch/project/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/SignupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/controllers/SignupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/com/cinematch/project/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CineMatch-Project/target/classes/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +34,12 @@
     &quot;assignee&quot;: &quot;elenasa403-creator&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/pkapnakes/CineMatch-Project.git",
-    "accountId": "9070a3a8-f5cf-41b5-99f2-6b2f0b6cbc52"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pkapnakes/CineMatch-Project.git&quot;,
+    &quot;accountId&quot;: &quot;9070a3a8-f5cf-41b5-99f2-6b2f0b6cbc52&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
